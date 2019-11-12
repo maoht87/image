@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Commands\PolygonCommand;
+use Omt\ImageHelper\Commands\PolygonCommand;
 use PHPUnit\Framework\TestCase;
 
 class PolygonCommandTest extends TestCase
@@ -14,9 +14,9 @@ class PolygonCommandTest extends TestCase
     {
         $points = [1, 2, 3, 4, 5, 6];
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $driver = Mockery::mock('\Intervention\Image\Gd\Driver');
+        $driver = Mockery::mock('\Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('getDriverName')->once()->andReturn('Gd');
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $command = new PolygonCommand([$points]);
@@ -30,9 +30,9 @@ class PolygonCommandTest extends TestCase
         $points = [1, 2, 3, 4, 5, 6];
         $imagick = Mockery::mock('\Imagick');
         $imagick->shouldReceive('drawimage');
-        $driver = Mockery::mock('\Intervention\Image\Imagick\Driver');
+        $driver = Mockery::mock('\Omt\ImageHelper\Imagick\Driver');
         $driver->shouldReceive('getDriverName')->once()->andReturn('Imagick');
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
 

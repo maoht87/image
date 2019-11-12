@@ -1,16 +1,16 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Omt\ImageHelper\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Gd\Color;
+use Omt\ImageHelper\Commands\AbstractCommand;
+use Omt\ImageHelper\Gd\Color;
 
 class PixelCommand extends AbstractCommand
 {
     /**
      * Draws one pixel to a given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

@@ -1,13 +1,13 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Closure;
 
 class ImageManagerStatic
 {
     /**
-     * Instance of Intervention\Image\ImageManager
+     * Instance of Omt\ImageHelper\ImageManager
      *
      * @var ImageManager
      */
@@ -50,8 +50,8 @@ class ImageManagerStatic
      *
      * @param  mixed $data
      *
-     * @return \Intervention\Image\Image
-     * @throws \Intervention\Image\Exception\NotReadableException
+     * @return \Omt\ImageHelper\Image
+     * @throws \Omt\ImageHelper\Exception\NotReadableException
      */
     public static function make($data)
     {
@@ -65,7 +65,7 @@ class ImageManagerStatic
      * @param  int   $height
      * @param  mixed $background
      *
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public static function canvas($width, $height, $background = null)
     {

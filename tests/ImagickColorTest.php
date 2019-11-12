@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Imagick\Color;
+use Omt\ImageHelper\Imagick\Color;
 use PHPUnit\Framework\TestCase;
 
 class ImagickColorTest extends TestCase
@@ -319,7 +319,7 @@ class ImagickColorTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\NotReadableException
+     * @expectedException \Omt\ImageHelper\Exception\NotReadableException
      */
     public function testParseUnknown()
     {
@@ -328,7 +328,7 @@ class ImagickColorTest extends TestCase
 
     private function validateColor($obj, $r, $g, $b, $a)
     {
-        $this->assertInstanceOf('Intervention\Image\Imagick\Color', $obj);
+        $this->assertInstanceOf('Omt\ImageHelper\Imagick\Color', $obj);
         $this->assertInstanceOf('ImagickPixel', $obj->pixel);
         $this->assertEquals($r, round($obj->getRedValue(), 2));
         $this->assertEquals($g, round($obj->getGreenValue(), 2));

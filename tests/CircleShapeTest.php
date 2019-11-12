@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Shapes\CircleShape as CircleGd;
-use Intervention\Image\Imagick\Shapes\CircleShape as CircleImagick;
+use Omt\ImageHelper\Gd\Shapes\CircleShape as CircleGd;
+use Omt\ImageHelper\Imagick\Shapes\CircleShape as CircleImagick;
 use PHPUnit\Framework\TestCase;
 
 class CircleShapeTest extends TestCase
@@ -14,7 +14,7 @@ class CircleShapeTest extends TestCase
     public function testGdConstructor()
     {
         $circle = new CircleGd(250);
-        $this->assertInstanceOf('Intervention\Image\Gd\Shapes\CircleShape', $circle);
+        $this->assertInstanceOf('Omt\ImageHelper\Gd\Shapes\CircleShape', $circle);
         $this->assertEquals(250, $circle->diameter);
 
     }
@@ -22,18 +22,18 @@ class CircleShapeTest extends TestCase
     public function testGdApplyToImage()
     {
         $core = imagecreatetruecolor(300, 200);
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($core);
         $circle = new CircleGd(250);
         $result = $circle->applyToImage($image, 10, 20);
-        $this->assertInstanceOf('Intervention\Image\Gd\Shapes\CircleShape', $circle);
+        $this->assertInstanceOf('Omt\ImageHelper\Gd\Shapes\CircleShape', $circle);
         $this->assertTrue($result);
     }
 
     public function testImagickConstructor()
     {
         $circle = new CircleImagick(250);
-        $this->assertInstanceOf('Intervention\Image\Imagick\Shapes\CircleShape', $circle);
+        $this->assertInstanceOf('Omt\ImageHelper\Imagick\Shapes\CircleShape', $circle);
         $this->assertEquals(250, $circle->width);
     }
 
@@ -41,11 +41,11 @@ class CircleShapeTest extends TestCase
     {
         $core = Mockery::mock('\Imagick');
         $core->shouldReceive('drawimage')->once();
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($core);
         $circle = new CircleImagick(250);
         $result = $circle->applyToImage($image, 10, 20);
-        $this->assertInstanceOf('Intervention\Image\Imagick\Shapes\CircleShape', $circle);
+        $this->assertInstanceOf('Omt\ImageHelper\Imagick\Shapes\CircleShape', $circle);
         $this->assertTrue($result);
     }
 

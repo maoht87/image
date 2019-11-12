@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Gd\Color;
+use Omt\ImageHelper\Gd\Color;
 use PHPUnit\Framework\TestCase;
 
 // alpha - A value between 0 and 127. 0 indicates completely opaque while 127 indicates completely transparent.
@@ -274,7 +274,7 @@ class GdColorTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\NotReadableException
+     * @expectedException \Omt\ImageHelper\Exception\NotReadableException
      */
     public function testParseUnknown()
     {
@@ -283,7 +283,7 @@ class GdColorTest extends TestCase
 
     private function validateColor($obj, $r, $g, $b, $a)
     {
-        $this->assertInstanceOf('Intervention\Image\Gd\Color', $obj);
+        $this->assertInstanceOf('Omt\ImageHelper\Gd\Color', $obj);
         $this->assertInternalType('int', $r);
         $this->assertInternalType('int', $g);
         $this->assertInternalType('int', $b);

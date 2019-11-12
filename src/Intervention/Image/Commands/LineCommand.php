@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 use Closure;
 
@@ -9,7 +9,7 @@ class LineCommand extends AbstractCommand
     /**
      * Draws line on given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)
@@ -20,7 +20,7 @@ class LineCommand extends AbstractCommand
         $y2 = $this->argument(3)->type('numeric')->required()->value();
         $callback = $this->argument(4)->type('closure')->value();
 
-        $line_classname = sprintf('\Intervention\Image\%s\Shapes\LineShape',
+        $line_classname = sprintf('\Omt\ImageHelper\%s\Shapes\LineShape',
             $image->getDriver()->getDriverName());
 
         $line = new $line_classname($x2, $y2);

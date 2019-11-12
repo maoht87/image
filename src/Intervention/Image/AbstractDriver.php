@@ -1,22 +1,22 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
 abstract class AbstractDriver
 {
     /**
      * Decoder instance to init images from
      *
-     * @var \Intervention\Image\AbstractDecoder
+     * @var \Omt\ImageHelper\AbstractDecoder
      */
     public $decoder;
 
     /**
      * Image encoder instance
      *
-     * @var \Intervention\Image\AbstractEncoder
+     * @var \Omt\ImageHelper\AbstractEncoder
      */
     public $encoder;
 
@@ -26,7 +26,7 @@ abstract class AbstractDriver
      * @param  int     $width
      * @param  int     $height
      * @param  string  $background
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     abstract public function newImage($width, $height, $background);
 
@@ -59,7 +59,7 @@ abstract class AbstractDriver
      * Initiates new image from given input
      *
      * @param  mixed $data
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function init($data)
     {
@@ -72,7 +72,7 @@ abstract class AbstractDriver
      * @param  Image   $image
      * @param  string  $format
      * @param  int     $quality
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function encode($image, $format, $quality)
     {
@@ -85,7 +85,7 @@ abstract class AbstractDriver
      * @param  Image  $image
      * @param  string $name
      * @param  array $arguments
-     * @return \Intervention\Image\Commands\AbstractCommand
+     * @return \Omt\ImageHelper\Commands\AbstractCommand
      */
     public function executeCommand($image, $name, $arguments)
     {
@@ -107,8 +107,8 @@ abstract class AbstractDriver
         $name = mb_convert_case($name[0], MB_CASE_UPPER, 'utf-8') . mb_substr($name, 1, mb_strlen($name));
         
         $drivername = $this->getDriverName();
-        $classnameLocal = sprintf('\Intervention\Image\%s\Commands\%sCommand', $drivername, ucfirst($name));
-        $classnameGlobal = sprintf('\Intervention\Image\Commands\%sCommand', ucfirst($name));
+        $classnameLocal = sprintf('\Omt\ImageHelper\%s\Commands\%sCommand', $drivername, ucfirst($name));
+        $classnameGlobal = sprintf('\Omt\ImageHelper\Commands\%sCommand', ucfirst($name));
 
         if (class_exists($classnameLocal)) {
             return $classnameLocal;

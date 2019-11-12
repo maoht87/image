@@ -1,15 +1,15 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Omt\ImageHelper\Gd\Commands;
 
-use Intervention\Image\Size;
+use Omt\ImageHelper\Size;
 
 class FitCommand extends ResizeCommand
 {
     /**
      * Crops and resized an image at the same time
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

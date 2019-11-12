@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Omt\ImageHelper\Gd;
 
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
-class Encoder extends \Intervention\Image\AbstractEncoder
+class Encoder extends \Omt\ImageHelper\AbstractEncoder
 {
     /**
      * Processes and returns encoded image as JPEG string

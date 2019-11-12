@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\BlurCommand as BlurGd;
-use Intervention\Image\Imagick\Commands\BlurCommand as BlurImagick;
+use Omt\ImageHelper\Gd\Commands\BlurCommand as BlurGd;
+use Omt\ImageHelper\Imagick\Commands\BlurCommand as BlurImagick;
 use PHPUnit\Framework\TestCase;
 
 class BlurCommandTest extends TestCase
@@ -14,7 +14,7 @@ class BlurCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->times(2)->andReturn($resource);
         $command = new BlurGd([2]);
         $result = $command->execute($image);
@@ -25,7 +25,7 @@ class BlurCommandTest extends TestCase
     {
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('blurimage')->with(2, 1)->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $command = new BlurImagick([2]);
         $result = $command->execute($image);

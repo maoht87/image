@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image\Exception;
+namespace Omt\ImageHelper\Exception;
 
 class InvalidArgumentException extends ImageException
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Omt\ImageHelper\Gd\Commands;
 
-use Intervention\Image\Point;
-use Intervention\Image\Size;
+use Omt\ImageHelper\Point;
+use Omt\ImageHelper\Size;
 
 class CropCommand extends ResizeCommand
 {
     /**
      * Crop an image instance
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)
@@ -21,7 +21,7 @@ class CropCommand extends ResizeCommand
         $y = $this->argument(3)->type('digit')->value();
 
         if (is_null($width) || is_null($height)) {
-            throw new \Intervention\Image\Exception\InvalidArgumentException(
+            throw new \Omt\ImageHelper\Exception\InvalidArgumentException(
                 "Width and height of cutout needs to be defined."
             );
         }

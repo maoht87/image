@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\ResetCommand as ResetGd;
-use Intervention\Image\Imagick\Commands\ResetCommand as ResetImagick;
+use Omt\ImageHelper\Gd\Commands\ResetCommand as ResetGd;
+use Omt\ImageHelper\Imagick\Commands\ResetCommand as ResetImagick;
 use PHPUnit\Framework\TestCase;
 
 class ResetCommandTest extends TestCase
@@ -13,10 +13,10 @@ class ResetCommandTest extends TestCase
 
     public function testGdWithoutName()
     {
-        $size = Mockery::mock('Intervention\Image\Size', [800, 600]);
+        $size = Mockery::mock('Omt\ImageHelper\Size', [800, 600]);
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
-        $driver = Mockery::mock('Intervention\Image\Gd\Driver');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
+        $driver = Mockery::mock('Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('cloneCore')->with($resource)->once()->andReturn($resource);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
@@ -29,10 +29,10 @@ class ResetCommandTest extends TestCase
 
     public function testGdWithName()
     {
-        $size = Mockery::mock('Intervention\Image\Size', [800, 600]);
+        $size = Mockery::mock('Omt\ImageHelper\Size', [800, 600]);
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
-        $driver = Mockery::mock('Intervention\Image\Gd\Driver');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
+        $driver = Mockery::mock('Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('cloneCore')->with($resource)->once()->andReturn($resource);
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
@@ -47,7 +47,7 @@ class ResetCommandTest extends TestCase
     {
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('clear')->once();
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $image->shouldReceive('setCore')->once();
         $image->shouldReceive('getBackup')->once()->andReturn($imagick);
@@ -60,7 +60,7 @@ class ResetCommandTest extends TestCase
     {
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('clear')->once();
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $image->shouldReceive('setCore')->once();
         $image->shouldReceive('getBackup')->once()->withArgs(['fooBackup'])->andReturn($imagick);

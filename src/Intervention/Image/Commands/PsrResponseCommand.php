@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 use GuzzleHttp\Psr7\Response;
 
@@ -15,7 +15,7 @@ class PsrResponseCommand extends AbstractCommand
      * streams and more "clean" streaming, however drivers has to be updated
      * first.
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

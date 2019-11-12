@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Gd\Shapes;
+namespace Omt\ImageHelper\Gd\Shapes;
 
-use Intervention\Image\Image;
+use Omt\ImageHelper\Image;
 
 class CircleShape extends EllipseShape
 {

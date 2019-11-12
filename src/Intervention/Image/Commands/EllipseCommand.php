@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 use Closure;
 
@@ -9,7 +9,7 @@ class EllipseCommand extends AbstractCommand
     /**
      * Draws ellipse on given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)
@@ -20,7 +20,7 @@ class EllipseCommand extends AbstractCommand
         $y = $this->argument(3)->type('numeric')->required()->value();
         $callback = $this->argument(4)->type('closure')->value();
 
-        $ellipse_classname = sprintf('\Intervention\Image\%s\Shapes\EllipseShape',
+        $ellipse_classname = sprintf('\Omt\ImageHelper\%s\Shapes\EllipseShape',
             $image->getDriver()->getDriverName());
 
         $ellipse = new $ellipse_classname($width, $height);

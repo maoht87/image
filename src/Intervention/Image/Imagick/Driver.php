@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Omt\ImageHelper\Imagick;
 
-use Intervention\Image\AbstractDriver;
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Omt\ImageHelper\AbstractDriver;
+use Omt\ImageHelper\Exception\NotSupportedException;
+use Omt\ImageHelper\Image;
 
 class Driver extends AbstractDriver
 {
@@ -32,7 +32,7 @@ class Driver extends AbstractDriver
      * @param  int     $width
      * @param  int     $height
      * @param  mixed   $background
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function newImage($width, $height, $background = null)
     {

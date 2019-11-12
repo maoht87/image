@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\ColorizeCommand as ColorizeGd;
-use Intervention\Image\Imagick\Commands\ColorizeCommand as ColorizeImagick;
+use Omt\ImageHelper\Gd\Commands\ColorizeCommand as ColorizeGd;
+use Omt\ImageHelper\Imagick\Commands\ColorizeCommand as ColorizeImagick;
 use PHPUnit\Framework\TestCase;
 
 class ColorizeCommandTest extends TestCase
@@ -14,7 +14,7 @@ class ColorizeCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $command = new ColorizeGd([20, 0, -40]);
         $result = $command->execute($image);
@@ -28,7 +28,7 @@ class ColorizeCommandTest extends TestCase
         $imagick->shouldReceive('levelimage')->with(0, 4, 42, \Imagick::CHANNEL_RED)->once()->andReturn(true);
         $imagick->shouldReceive('levelimage')->with(0, 1, 42, \Imagick::CHANNEL_GREEN)->once()->andReturn(true);
         $imagick->shouldReceive('levelimage')->with(0, 0.6, 42, \Imagick::CHANNEL_BLUE)->once()->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->times(4)->andReturn($imagick);
         $command = new ColorizeImagick([20, 0, -40]);
         $result = $command->execute($image);

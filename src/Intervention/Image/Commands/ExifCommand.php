@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\Exception\NotReadableException;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
 class ExifCommand extends AbstractCommand
 {
@@ -13,7 +13,7 @@ class ExifCommand extends AbstractCommand
      * Note: Windows PHP Users - in order to use this method you will need to
      * enable the mbstring and exif extensions within the php.ini file.
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

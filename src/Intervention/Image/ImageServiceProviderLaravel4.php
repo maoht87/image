@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Response as IlluminateResponse;
@@ -107,6 +107,6 @@ class ImageServiceProviderLaravel4 extends ServiceProvider
             return new ImageManager($app['config']->get('image::config'));
         });
 
-        $app->alias('image', 'Intervention\Image\ImageManager');
+        $app->alias('image', 'Omt\ImageHelper\ImageManager');
     }
 }

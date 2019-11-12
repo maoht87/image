@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\InsertCommand as InsertGd;
-use Intervention\Image\Imagick\Commands\InsertCommand as InsertImagick;
+use Omt\ImageHelper\Gd\Commands\InsertCommand as InsertGd;
+use Omt\ImageHelper\Imagick\Commands\InsertCommand as InsertImagick;
 use PHPUnit\Framework\TestCase;
 
 class InsertCommandTest extends TestCase
@@ -13,20 +13,20 @@ class InsertCommandTest extends TestCase
 
     public function testGd()
     {
-        $position = Mockery::mock('\Intervention\Image\Point', [0, 0]);
+        $position = Mockery::mock('\Omt\ImageHelper\Point', [0, 0]);
 
-        $image_size = Mockery::mock('\Intervention\Image\Size', [800, 600]);
+        $image_size = Mockery::mock('\Omt\ImageHelper\Size', [800, 600]);
         $image_size->shouldReceive('align')->with('center', 10, 20)->once()->andReturn($image_size);
-        $watermark_size = Mockery::mock('\Intervention\Image\Size', [800, 600]);
+        $watermark_size = Mockery::mock('\Omt\ImageHelper\Size', [800, 600]);
         $watermark_size->shouldReceive('align')->with('center')->once()->andReturn($watermark_size);
         $image_size->shouldReceive('relativePosition')->with($watermark_size)->once()->andReturn($position);
 
         $path = __DIR__.'/images/test.jpg';
         $resource = imagecreatefromjpeg($path);
-        $watermark = Mockery::mock('Intervention\Image\Image');
-        $driver = Mockery::mock('Intervention\Image\Gd\Driver');
+        $watermark = Mockery::mock('Omt\ImageHelper\Image');
+        $driver = Mockery::mock('Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('init')->with($path)->once()->andReturn($watermark);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getCore')->times(2)->andReturn($resource);
         $image->shouldReceive('getSize')->once()->andReturn($image_size);
@@ -40,21 +40,21 @@ class InsertCommandTest extends TestCase
 
     public function testImagick()
     {
-        $position = Mockery::mock('\Intervention\Image\Point', [10, 20]);
+        $position = Mockery::mock('\Omt\ImageHelper\Point', [10, 20]);
 
-        $image_size = Mockery::mock('\Intervention\Image\Size', [800, 600]);
+        $image_size = Mockery::mock('\Omt\ImageHelper\Size', [800, 600]);
         $image_size->shouldReceive('align')->with('center', 10, 20)->once()->andReturn($image_size);
-        $watermark_size = Mockery::mock('\Intervention\Image\Size', [800, 600]);
+        $watermark_size = Mockery::mock('\Omt\ImageHelper\Size', [800, 600]);
         $watermark_size->shouldReceive('align')->with('center')->once()->andReturn($watermark_size);
         $image_size->shouldReceive('relativePosition')->with($watermark_size)->once()->andReturn($position);
 
         $path = __DIR__.'/images/test.jpg';
-        $watermark = Mockery::mock('Intervention\Image\Image');
-        $driver = Mockery::mock('Intervention\Image\Imagick\Driver');
+        $watermark = Mockery::mock('Omt\ImageHelper\Image');
+        $driver = Mockery::mock('Omt\ImageHelper\Imagick\Driver');
         $driver->shouldReceive('init')->with($path)->once()->andReturn($watermark);
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('compositeimage')->with($imagick, \Imagick::COMPOSITE_DEFAULT, 10, 20)->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getSize')->once()->andReturn($image_size);

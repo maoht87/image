@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,6 +29,6 @@ class ImageServiceProviderLumen extends ServiceProvider
             return new ImageManager($app['config']->get('image'));
         });
 
-        $app->alias('image', 'Intervention\Image\ImageManager');
+        $app->alias('image', 'Omt\ImageHelper\ImageManager');
     }
 }

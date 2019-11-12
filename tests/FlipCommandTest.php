@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\FlipCommand as FlipGd;
-use Intervention\Image\Imagick\Commands\FlipCommand as FlipImagick;
+use Omt\ImageHelper\Gd\Commands\FlipCommand as FlipGd;
+use Omt\ImageHelper\Imagick\Commands\FlipCommand as FlipImagick;
 use PHPUnit\Framework\TestCase;
 
 class FlipCommandTest extends TestCase
@@ -13,9 +13,9 @@ class FlipCommandTest extends TestCase
 
     public function testGd()
     {
-        $size = Mockery::mock('\Intervention\Image\Size', [800, 600]);
+        $size = Mockery::mock('\Omt\ImageHelper\Size', [800, 600]);
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getSize')->once()->andReturn($size);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('setCore')->once();
@@ -28,7 +28,7 @@ class FlipCommandTest extends TestCase
     {
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('flopimage')->with()->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $command = new FlipImagick(['h']);
         $result = $command->execute($image);
@@ -36,7 +36,7 @@ class FlipCommandTest extends TestCase
 
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('flipimage')->with()->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $command = new FlipImagick(['v']);
         $result = $command->execute($image);

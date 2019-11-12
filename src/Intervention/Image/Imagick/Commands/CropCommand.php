@@ -1,18 +1,18 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Omt\ImageHelper\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Exception\InvalidArgumentException;
-use Intervention\Image\Point;
-use Intervention\Image\Size;
+use Omt\ImageHelper\Commands\AbstractCommand;
+use Omt\ImageHelper\Exception\InvalidArgumentException;
+use Omt\ImageHelper\Point;
+use Omt\ImageHelper\Size;
 
 class CropCommand extends AbstractCommand
 {
     /**
      * Crop an image instance
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

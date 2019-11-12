@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Illuminate\Support\Facades\Response as IlluminateResponse;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;

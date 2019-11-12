@@ -1,19 +1,19 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Omt\ImageHelper\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Image;
-use Intervention\Image\Imagick\Color;
-use Intervention\Image\Imagick\Decoder;
+use Omt\ImageHelper\Commands\AbstractCommand;
+use Omt\ImageHelper\Exception\NotReadableException;
+use Omt\ImageHelper\Image;
+use Omt\ImageHelper\Imagick\Color;
+use Omt\ImageHelper\Imagick\Decoder;
 
 class FillCommand extends AbstractCommand
 {
     /**
      * Fills image with color or pattern
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

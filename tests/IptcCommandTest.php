@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Commands\IptcCommand;
+use Omt\ImageHelper\Commands\IptcCommand;
 use PHPUnit\Framework\TestCase;
 
 class IptcCommandTest extends TestCase
@@ -12,7 +12,7 @@ class IptcCommandTest extends TestCase
 
     public function testFetchAll()
     {
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->dirname = __DIR__.'/images';
         $image->basename = 'iptc.jpg';
         $command = new IptcCommand([]);
@@ -24,7 +24,7 @@ class IptcCommandTest extends TestCase
 
     public function testFetchDefined()
     {
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->dirname = __DIR__.'/images';
         $image->basename = 'exif.jpg';
         $command = new IptcCommand(['AuthorByline']);
@@ -37,7 +37,7 @@ class IptcCommandTest extends TestCase
 
     public function testFetchNonExisting()
     {
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->dirname = __DIR__.'/images';
         $image->basename = 'exif.jpg';
         $command = new IptcCommand(['xxx']);
@@ -50,7 +50,7 @@ class IptcCommandTest extends TestCase
 
     public function testFetchFromPng()
     {
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->dirname = __DIR__.'/images';
         $image->basename = 'star.png';
         $command = new IptcCommand(['Orientation']);
@@ -62,7 +62,7 @@ class IptcCommandTest extends TestCase
 
     public function testReturnNullOnIptcReadFail()
     {
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $command = new IptcCommand(['Orientation']);
         $result = $command->execute($image);
         $this->assertTrue($result);

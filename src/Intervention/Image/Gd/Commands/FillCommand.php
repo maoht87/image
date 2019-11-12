@@ -1,17 +1,17 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Omt\ImageHelper\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Gd\Color;
-use Intervention\Image\Gd\Decoder;
+use Omt\ImageHelper\Commands\AbstractCommand;
+use Omt\ImageHelper\Gd\Color;
+use Omt\ImageHelper\Gd\Decoder;
 
 class FillCommand extends AbstractCommand
 {
     /**
      * Fills image with color or pattern
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)
@@ -32,7 +32,7 @@ class FillCommand extends AbstractCommand
             imagesettile($image->getCore(), $tile->getCore());
             $filling = IMG_COLOR_TILED;
 
-        } catch (\Intervention\Image\Exception\NotReadableException $e) {
+        } catch (\Omt\ImageHelper\Exception\NotReadableException $e) {
 
             // set solid color filling
             $color = new Color($filling);

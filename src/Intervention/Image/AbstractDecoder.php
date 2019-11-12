@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use GuzzleHttp\Psr7\Stream;
-use Intervention\Image\Exception\NotReadableException;
+use Omt\ImageHelper\Exception\NotReadableException;
 use Psr\Http\Message\StreamInterface;
 
 abstract class AbstractDecoder
@@ -12,7 +12,7 @@ abstract class AbstractDecoder
      * Initiates new image from path in filesystem
      *
      * @param  string $path
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     abstract public function initFromPath($path);
 
@@ -20,7 +20,7 @@ abstract class AbstractDecoder
      * Initiates new image from binary data
      *
      * @param  string $data
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     abstract public function initFromBinary($data);
 
@@ -28,7 +28,7 @@ abstract class AbstractDecoder
      * Initiates new image from GD resource
      *
      * @param  Resource $resource
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     abstract public function initFromGdResource($resource);
 
@@ -36,7 +36,7 @@ abstract class AbstractDecoder
      * Initiates new image from Imagick object
      *
      * @param \Imagick $object
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     abstract public function initFromImagick(\Imagick $object);
 
@@ -61,7 +61,7 @@ abstract class AbstractDecoder
      * Init from given URL
      *
      * @param  string $url
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromUrl($url)
     {
@@ -90,7 +90,7 @@ abstract class AbstractDecoder
      * Init from given stream
      *
      * @param StreamInterface|resource $stream
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromStream($stream)
     {
@@ -154,13 +154,13 @@ abstract class AbstractDecoder
     }
 
     /**
-     * Determines if current source data is Intervention\Image\Image object
+     * Determines if current source data is Omt\ImageHelper\Image object
      *
      * @return boolean
      */
     public function isInterventionImage()
     {
-        return is_a($this->data, '\Intervention\Image\Image');
+        return is_a($this->data, '\Omt\ImageHelper\Image');
     }
 
     /**
@@ -267,10 +267,10 @@ abstract class AbstractDecoder
     }
 
     /**
-     * Initiates new Image from Intervention\Image\Image
+     * Initiates new Image from Omt\ImageHelper\Image
      *
      * @param  Image $object
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromInterventionImage($object)
     {
@@ -303,7 +303,7 @@ abstract class AbstractDecoder
      * Initiates new image from mixed data
      *
      * @param  mixed $data
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function init($data)
     {

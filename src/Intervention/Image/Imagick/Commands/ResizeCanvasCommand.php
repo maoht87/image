@@ -1,15 +1,15 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Omt\ImageHelper\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Omt\ImageHelper\Commands\AbstractCommand;
 
 class ResizeCanvasCommand extends AbstractCommand
 {
     /**
      * Resizes image boundaries
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

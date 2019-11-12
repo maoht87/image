@@ -1,5 +1,5 @@
 <?php
-use Intervention\Image\Commands\StreamCommand;
+use Omt\ImageHelper\Commands\StreamCommand;
 use PHPUnit\Framework\TestCase;
 
 class StreamCommandTest extends TestCase
@@ -12,7 +12,7 @@ class StreamCommandTest extends TestCase
     public function testStreamCreationAndContent()
     {
         $encodedContent = 'sample-content';
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
 
         $image->shouldReceive('encode')
             ->with('jpg', 87)

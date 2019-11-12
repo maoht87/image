@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Commands\ChecksumCommand;
+use Omt\ImageHelper\Commands\ChecksumCommand;
 use PHPUnit\Framework\TestCase;
 
 class ChecksumCommandTest extends TestCase
@@ -12,10 +12,10 @@ class ChecksumCommandTest extends TestCase
 
     public function testExecute()
     {
-        $size = Mockery::mock('Intervention\Image\Size', [3, 3]);
+        $size = Mockery::mock('Omt\ImageHelper\Size', [3, 3]);
         $color = [0,0,0,1];
         $resource = imagecreatefrompng(__DIR__.'/images/tile.png');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getSize')->once()->andReturn($size);
         $image->shouldReceive('pickColor')->times(9)->andReturn($color);
         $command = new ChecksumCommand([]);

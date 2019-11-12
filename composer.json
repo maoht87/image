@@ -1,14 +1,14 @@
 {
-    "name": "intervention/image",
+    "name": "omt/image_helper",
     "description": "Image handling and manipulation library with support for Laravel integration",
     "homepage": "http://image.intervention.io/",
     "keywords": ["image", "gd", "imagick", "laravel", "watermark", "thumbnail"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Oliver Vogel",
-            "email": "oliver@olivervogel.com",
-            "homepage": "http://olivervogel.com/"
+            "name": "MaoDK",
+            "email": "maodk@omt.vn",
+            "homepage": "http://omt.vn/"
         }
     ],
     "require": {
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Intervention\\Image\\": "src/Intervention/Image"
+            "Omt\\ImageHelper\\": "src/Omt/ImageHelper"
         }
     },
     "extra": {
@@ -36,10 +36,10 @@
         },
         "laravel": {
             "providers": [
-                "Intervention\\Image\\ImageServiceProvider"
+                "Omt\\ImageHelper\\ImageServiceProvider"
             ],
             "aliases": {
-                "Image": "Intervention\\Image\\Facades\\Image"
+                "Image": "Omt\\ImageHelper\\Facades\\Image"
             }
         }
     },

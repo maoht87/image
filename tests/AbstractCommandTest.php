@@ -41,7 +41,7 @@ class AbstractCommandTest extends TestCase
     public function getTestCommand()
     {
         $arguments = ['foo', 'bar'];
-        $command = $this->getMockForAbstractClass('\Intervention\Image\Commands\AbstractCommand', [$arguments]);
+        $command = $this->getMockForAbstractClass('\Omt\ImageHelper\Commands\AbstractCommand', [$arguments]);
 
         return $command;
     }

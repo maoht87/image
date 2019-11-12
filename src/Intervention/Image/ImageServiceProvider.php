@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
@@ -60,16 +60,16 @@ class ImageServiceProvider extends ServiceProvider
     /**
      * Return ServiceProvider according to Laravel version
      *
-     * @return \Intervention\Image\Provider\ProviderInterface
+     * @return \Omt\ImageHelper\Provider\ProviderInterface
      */
     private function getProvider()
     {
         if ($this->app instanceof LumenApplication) {
-            $provider = '\Intervention\Image\ImageServiceProviderLumen';
+            $provider = '\Omt\ImageHelper\ImageServiceProviderLumen';
         } elseif (version_compare(IlluminateApplication::VERSION, '5.0', '<')) {
-            $provider = '\Intervention\Image\ImageServiceProviderLaravel4';
+            $provider = '\Omt\ImageHelper\ImageServiceProviderLaravel4';
         } else {
-            $provider = '\Intervention\Image\ImageServiceProviderLaravelRecent';
+            $provider = '\Omt\ImageHelper\ImageServiceProviderLaravelRecent';
         }
 
         return new $provider($this->app);

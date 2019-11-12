@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Constraint;
+use Omt\ImageHelper\Constraint;
 use PHPUnit\Framework\TestCase;
 
 class ConstraintTest extends TestCase
@@ -14,7 +14,7 @@ class ConstraintTest extends TestCase
     {
         $size = $this->getMockedSize(800, 600);
         $constraint = new Constraint($size);
-        $this->assertInstanceOf('Intervention\Image\Constraint', $constraint);
+        $this->assertInstanceOf('Omt\ImageHelper\Constraint', $constraint);
         $this->assertFalse($constraint->isFixed(Constraint::ASPECTRATIO));
         $this->assertFalse($constraint->isFixed(Constraint::UPSIZE));
     }
@@ -49,7 +49,7 @@ class ConstraintTest extends TestCase
 
     private function getMockedSize($width, $height)
     {
-        $size = Mockery::mock('\Intervention\Image\Size', [$width, $height]);
+        $size = Mockery::mock('\Omt\ImageHelper\Size', [$width, $height]);
         $size->shouldReceive('getWidth')->andReturn($width);
         $size->shouldReceive('getHeight')->andReturn($height);
         $size->shouldReceive('getRatio')->andReturn($width/$height);

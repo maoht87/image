@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Omt\ImageHelper\Imagick;
 
-use Intervention\Image\AbstractEncoder;
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\AbstractEncoder;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
 class Encoder extends AbstractEncoder
 {

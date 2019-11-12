@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\BackupCommand as BackupGd;
-use Intervention\Image\Imagick\Commands\BackupCommand as BackupImagick;
+use Omt\ImageHelper\Gd\Commands\BackupCommand as BackupGd;
+use Omt\ImageHelper\Imagick\Commands\BackupCommand as BackupImagick;
 use PHPUnit\Framework\TestCase;
 
 class BackupCommandTest extends TestCase
@@ -13,10 +13,10 @@ class BackupCommandTest extends TestCase
 
     public function testGdWithoutName()
     {
-        $driver = Mockery::mock('Intervention\Image\Gd\Driver');
+        $driver = Mockery::mock('Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('cloneCore')->once();
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image',  [$driver]);
+        $image = Mockery::mock('Omt\ImageHelper\Image',  [$driver]);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('setBackup')->once();
         $command = new BackupGd([]);
@@ -26,10 +26,10 @@ class BackupCommandTest extends TestCase
 
     public function testGdWithName()
     {
-        $driver = Mockery::mock('Intervention\Image\Gd\Driver');
+        $driver = Mockery::mock('Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('cloneCore')->once();
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image', [$driver]);
+        $image = Mockery::mock('Omt\ImageHelper\Image', [$driver]);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('setBackup')->once();
         $command = new BackupGd(['name' => 'fooBackup']);
@@ -39,10 +39,10 @@ class BackupCommandTest extends TestCase
 
     public function testImagickWithoutName()
     {
-        $driver = Mockery::mock('Intervention\Image\Imagick\Driver');
+        $driver = Mockery::mock('Omt\ImageHelper\Imagick\Driver');
         $driver->shouldReceive('cloneCore')->once();
         $imagick = Mockery::mock('Imagick');
-        $image = Mockery::mock('Intervention\Image\Image', [$driver]);
+        $image = Mockery::mock('Omt\ImageHelper\Image', [$driver]);
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $image->shouldReceive('setBackup')->once();
         $command = new BackupImagick([]);
@@ -52,10 +52,10 @@ class BackupCommandTest extends TestCase
 
     public function testImagickWithName()
     {
-        $driver = Mockery::mock('Intervention\Image\Imagick\Driver');
+        $driver = Mockery::mock('Omt\ImageHelper\Imagick\Driver');
         $driver->shouldReceive('cloneCore')->once();
         $imagick = Mockery::mock('Imagick');
-        $image = Mockery::mock('Intervention\Image\Image', [$driver]);
+        $image = Mockery::mock('Omt\ImageHelper\Image', [$driver]);
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $image->shouldReceive('setBackup')->once();
         $command = new BackupImagick(['name' => 'fooBackup']);

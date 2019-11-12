@@ -1,15 +1,15 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Omt\ImageHelper\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Omt\ImageHelper\Commands\AbstractCommand;
 
 class PixelateCommand extends AbstractCommand
 {
     /**
      * Applies a pixelation effect to a given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

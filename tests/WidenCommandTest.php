@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\WidenCommand as WidenGd;
-use Intervention\Image\Imagick\Commands\WidenCommand as WidenImagick;
+use Omt\ImageHelper\Gd\Commands\WidenCommand as WidenGd;
+use Omt\ImageHelper\Imagick\Commands\WidenCommand as WidenImagick;
 use PHPUnit\Framework\TestCase;
 
 class WidenCommandTest extends TestCase
@@ -15,8 +15,8 @@ class WidenCommandTest extends TestCase
     {
         $callback = function ($constraint) { $constraint->aspectRatio(); };
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
-        $size = Mockery::mock('Intervention\Image\Size', [800, 600]);
+        $image = Mockery::mock('Omt\ImageHelper\Image');
+        $size = Mockery::mock('Omt\ImageHelper\Size', [800, 600]);
         $size->shouldReceive('resize')->once()->andReturn($size);
         $size->shouldReceive('getWidth')->once()->andReturn(800);
         $size->shouldReceive('getHeight')->once()->andReturn(600);
@@ -35,11 +35,11 @@ class WidenCommandTest extends TestCase
         $callback = function ($constraint) { $constraint->upsize(); };
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('scaleimage')->with(300, 200)->once()->andReturn(true);
-        $size = Mockery::mock('Intervention\Image\Size', [800, 600]);
+        $size = Mockery::mock('Omt\ImageHelper\Size', [800, 600]);
         $size->shouldReceive('resize')->once()->andReturn($size);
         $size->shouldReceive('getWidth')->once()->andReturn(300);
         $size->shouldReceive('getHeight')->once()->andReturn(200);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $image->shouldReceive('getSize')->once()->andReturn($size);
         $command = new WidenImagick([200]);

@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Omt\ImageHelper\Imagick;
 
-use Intervention\Image\AbstractFont;
-use Intervention\Image\Exception\RuntimeException;
-use Intervention\Image\Image;
+use Omt\ImageHelper\AbstractFont;
+use Omt\ImageHelper\Exception\RuntimeException;
+use Omt\ImageHelper\Image;
 
 class Font extends AbstractFont
 {

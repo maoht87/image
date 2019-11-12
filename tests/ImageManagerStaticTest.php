@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\ImageManagerStatic;
+use Omt\ImageHelper\ImageManagerStatic;
 use PHPUnit\Framework\TestCase;
 
 class ImageManagerStaticTest extends TestCase
@@ -12,15 +12,15 @@ class ImageManagerStaticTest extends TestCase
 
     public function testGetManager()
     {
-        $manager = Mockery::mock('Intervention\Image\ImageManager');
+        $manager = Mockery::mock('Omt\ImageHelper\ImageManager');
         $managerStatic = new ImageManagerStatic($manager);
         $m = $managerStatic->getManager();
-        $this->assertInstanceOf('Intervention\Image\ImageManager', $m);
+        $this->assertInstanceOf('Omt\ImageHelper\ImageManager', $m);
     }
 
     public function testMake()
     {
-        $manager = Mockery::mock('Intervention\Image\ImageManager');
+        $manager = Mockery::mock('Omt\ImageHelper\ImageManager');
         $manager->shouldReceive('make')->with('foo')->once();
         $managerStatic = new ImageManagerStatic($manager);
         $managerStatic->make('foo');
@@ -28,7 +28,7 @@ class ImageManagerStaticTest extends TestCase
 
     public function testCanvas()
     {
-        $manager = Mockery::mock('Intervention\Image\ImageManager');
+        $manager = Mockery::mock('Omt\ImageHelper\ImageManager');
         $manager->shouldReceive('canvas')->with(100, 100, null)->once();
         $managerStatic = new ImageManagerStatic($manager);
         $managerStatic->canvas(100, 100);

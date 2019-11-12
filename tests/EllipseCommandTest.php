@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Commands\EllipseCommand;
+use Omt\ImageHelper\Commands\EllipseCommand;
 use PHPUnit\Framework\TestCase;
 
 class EllipseCommandTest extends TestCase
@@ -13,9 +13,9 @@ class EllipseCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $driver = Mockery::mock('\Intervention\Image\Gd\Driver');
+        $driver = Mockery::mock('\Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('getDriverName')->once()->andReturn('Gd');
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $command = new EllipseCommand([250, 150, 10, 20]);
@@ -28,9 +28,9 @@ class EllipseCommandTest extends TestCase
     {
         $imagick = Mockery::mock('\Imagick');
         $imagick->shouldReceive('drawimage');
-        $driver = Mockery::mock('\Intervention\Image\Imagick\Driver');
+        $driver = Mockery::mock('\Omt\ImageHelper\Imagick\Driver');
         $driver->shouldReceive('getDriverName')->once()->andReturn('Imagick');
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
 

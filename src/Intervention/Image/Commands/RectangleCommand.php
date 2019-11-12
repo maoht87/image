@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 use Closure;
 
@@ -9,7 +9,7 @@ class RectangleCommand extends AbstractCommand
     /**
      * Draws rectangle on given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)
@@ -20,7 +20,7 @@ class RectangleCommand extends AbstractCommand
         $y2 = $this->argument(3)->type('numeric')->required()->value();
         $callback = $this->argument(4)->type('closure')->value();
 
-        $rectangle_classname = sprintf('\Intervention\Image\%s\Shapes\RectangleShape',
+        $rectangle_classname = sprintf('\Omt\ImageHelper\%s\Shapes\RectangleShape',
             $image->getDriver()->getDriverName());
 
         $rectangle = new $rectangle_classname($x1, $y1, $x2, $y2);

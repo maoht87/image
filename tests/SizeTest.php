@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Size;
+use Omt\ImageHelper\Size;
 use PHPUnit\Framework\TestCase;
 
 class SizeTest extends TestCase
@@ -13,18 +13,18 @@ class SizeTest extends TestCase
     public function testConstructor()
     {
         $size = new Size;
-        $this->assertInstanceOf('Intervention\Image\Size', $size);
-        $this->assertInstanceOf('Intervention\Image\Point', $size->pivot);
+        $this->assertInstanceOf('Omt\ImageHelper\Size', $size);
+        $this->assertInstanceOf('Omt\ImageHelper\Point', $size->pivot);
         $this->assertEquals(1, $size->width);
         $this->assertEquals(1, $size->height);
     }
 
     public function testConstructorWithCoordinates()
     {
-        $pivot = Mockery::mock('Intervention\Image\Point');
+        $pivot = Mockery::mock('Omt\ImageHelper\Point');
         $size = new Size(300, 200, $pivot);
-        $this->assertInstanceOf('Intervention\Image\Size', $size);
-        $this->assertInstanceOf('Intervention\Image\Point', $size->pivot);
+        $this->assertInstanceOf('Omt\ImageHelper\Size', $size);
+        $this->assertInstanceOf('Omt\ImageHelper\Point', $size->pivot);
         $this->assertEquals(300, $size->width);
         $this->assertEquals(200, $size->height);
     }
@@ -274,7 +274,7 @@ class SizeTest extends TestCase
     {
         $width = 640;
         $height = 480;
-        $pivot = Mockery::mock('Intervention\Image\Point');
+        $pivot = Mockery::mock('Omt\ImageHelper\Point');
         $pivot->shouldReceive('setPosition')->with(0, 0)->once();
         $pivot->shouldReceive('setPosition')->with(intval($width/2), 0)->once();
         $pivot->shouldReceive('setPosition')->with($width, 0)->once();
@@ -295,7 +295,7 @@ class SizeTest extends TestCase
         $box->align('bottom-left');
         $box->align('bottom');
         $b = $box->align('bottom-right');
-        $this->assertInstanceOf('Intervention\Image\Size', $b);
+        $this->assertInstanceOf('Omt\ImageHelper\Size', $b);
     }
 
     public function testFit()
@@ -426,7 +426,7 @@ class SizeTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testInvalidResize()
     {

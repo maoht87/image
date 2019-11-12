@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\ResizeCanvasCommand as ResizeCanvasGd;
-use Intervention\Image\Imagick\Commands\ResizeCanvasCommand as ResizeCanvasImagick;
+use Omt\ImageHelper\Gd\Commands\ResizeCanvasCommand as ResizeCanvasGd;
+use Omt\ImageHelper\Imagick\Commands\ResizeCanvasCommand as ResizeCanvasImagick;
 use PHPUnit\Framework\TestCase;
 
 class ResizeCanvasCommandTest extends TestCase
@@ -14,20 +14,20 @@ class ResizeCanvasCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $canvas_pos = Mockery::mock('\Intervention\Image\Point', [0, 0]);
-        $canvas_size = Mockery::mock('\Intervention\Image\Size', [820, 640]);
+        $canvas_pos = Mockery::mock('\Omt\ImageHelper\Point', [0, 0]);
+        $canvas_size = Mockery::mock('\Omt\ImageHelper\Size', [820, 640]);
         $canvas_size->shouldReceive('align')->with('center')->andReturn($canvas_size);
         $canvas_size->shouldReceive('relativePosition')->andReturn($canvas_pos);
-        $image_pos = Mockery::mock('\Intervention\Image\Point', [0, 0]);
-        $image_size = Mockery::mock('\Intervention\Image\Size', [800, 600]);
+        $image_pos = Mockery::mock('\Omt\ImageHelper\Point', [0, 0]);
+        $image_size = Mockery::mock('\Omt\ImageHelper\Size', [800, 600]);
         $image_size->shouldReceive('align')->with('center')->andReturn($image_size);
         $image_size->shouldReceive('relativePosition')->andReturn($image_pos);
-        $canvas = Mockery::mock('\Intervention\Image\Image');
+        $canvas = Mockery::mock('\Omt\ImageHelper\Image');
         $canvas->shouldReceive('getCore')->times(5)->andReturn($resource);
         $canvas->shouldReceive('getSize')->andReturn($canvas_size);
-        $driver = Mockery::mock('\Intervention\Image\Gd\Driver');
+        $driver = Mockery::mock('\Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('newImage')->with(820, 640, '#b53717')->once()->andReturn($canvas);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getSize')->once()->andReturn($image_size);
         $image->shouldReceive('getWidth')->once()->andReturn(800);
@@ -41,15 +41,15 @@ class ResizeCanvasCommandTest extends TestCase
 
     public function testImagick()
     {
-        $canvas_pos = Mockery::mock('\Intervention\Image\Point', [0, 0]);
-        $canvas_size = Mockery::mock('\Intervention\Image\Size', [820, 640]);
+        $canvas_pos = Mockery::mock('\Omt\ImageHelper\Point', [0, 0]);
+        $canvas_size = Mockery::mock('\Omt\ImageHelper\Size', [820, 640]);
         $canvas_size->shouldReceive('align')->with('center')->andReturn($canvas_size);
         $canvas_size->shouldReceive('relativePosition')->andReturn($canvas_pos);
-        $image_pos = Mockery::mock('\Intervention\Image\Point', [0, 0]);
-        $image_size = Mockery::mock('\Intervention\Image\Size', [800, 600]);
+        $image_pos = Mockery::mock('\Omt\ImageHelper\Point', [0, 0]);
+        $image_size = Mockery::mock('\Omt\ImageHelper\Size', [800, 600]);
         $image_size->shouldReceive('align')->with('center')->andReturn($image_size);
         $image_size->shouldReceive('relativePosition')->andReturn($image_pos);
-        $canvas = Mockery::mock('\Intervention\Image\Image');
+        $canvas = Mockery::mock('\Omt\ImageHelper\Image');
 
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('cropimage')->with(800, 600, 0, 0)->once();
@@ -63,9 +63,9 @@ class ResizeCanvasCommandTest extends TestCase
         $canvas->shouldReceive('getCore')->times(6)->andReturn($imagick);
         $canvas->shouldReceive('getSize')->andReturn($canvas_size);
         $canvas->shouldReceive('pickColor')->with(0, 0, 'hex')->once()->andReturn('#000000');
-        $driver = Mockery::mock('\Intervention\Image\Gd\Driver');
+        $driver = Mockery::mock('\Omt\ImageHelper\Gd\Driver');
         $driver->shouldReceive('newImage')->with(820, 640, '#b53717')->once()->andReturn($canvas);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getSize')->once()->andReturn($image_size);
         $image->shouldReceive('getWidth')->once()->andReturn(800);

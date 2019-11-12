@@ -1,13 +1,13 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Omt\ImageHelper\Imagick\Commands;
 
 class WidenCommand extends ResizeCommand
 {
     /**
      * Resize image proportionally to given width
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

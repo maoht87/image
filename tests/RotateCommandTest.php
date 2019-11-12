@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\RotateCommand as RotateGd;
-use Intervention\Image\Imagick\Commands\RotateCommand as RotateImagick;
+use Omt\ImageHelper\Gd\Commands\RotateCommand as RotateGd;
+use Omt\ImageHelper\Imagick\Commands\RotateCommand as RotateImagick;
 use PHPUnit\Framework\TestCase;
 
 class RotateCommandTest extends TestCase
@@ -14,7 +14,7 @@ class RotateCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('setCore')->once()->andReturn($resource);
         $command = new RotateGd([45, '#b53717']);
@@ -27,7 +27,7 @@ class RotateCommandTest extends TestCase
         $pixel = Mockery::mock('ImagickPixel', ['#b53717']);
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('rotateimage')->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $command = new RotateImagick([45, '#b53717']);
         $result = $command->execute($image);
@@ -39,7 +39,7 @@ class RotateCommandTest extends TestCase
         $rotation = 45;
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('rotateimage')->with(Mockery::type('object'), -$rotation)->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $command = new RotateImagick([$rotation + (360 * 1000), '#b53717']);
         $result = $command->execute($image);

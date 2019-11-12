@@ -7,7 +7,7 @@ class GdSystemTest extends TestCase
     public function testMakeFromPath()
     {
         $img = $this->manager()->make('tests/images/circle.png');
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
@@ -23,7 +23,7 @@ class GdSystemTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\NotReadableException
+     * @expectedException \Omt\ImageHelper\Exception\NotReadableException
      */
    public function testMakeFromPathBroken()
    {
@@ -31,7 +31,7 @@ class GdSystemTest extends TestCase
    }
 
     /**
-     * @expectedException \Intervention\Image\Exception\NotReadableException
+     * @expectedException \Omt\ImageHelper\Exception\NotReadableException
      */
     public function testMakeFromNotExisting()
     {
@@ -42,7 +42,7 @@ class GdSystemTest extends TestCase
     {
         $str = file_get_contents('tests/images/circle.png');
         $img = $this->manager()->make($str);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -55,7 +55,7 @@ class GdSystemTest extends TestCase
     {
         $resource = imagecreatefrompng('tests/images/circle.png');
         $img = $this->manager()->make($resource);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -66,7 +66,7 @@ class GdSystemTest extends TestCase
     public function testMakeFromDataUrl()
     {
         $img = $this->manager()->make('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWM8c+bMfwYiABMxikYVUk8hAHWzA3cRvs4UAAAAAElFTkSuQmCC');
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -77,7 +77,7 @@ class GdSystemTest extends TestCase
     public function testMakeFromBase64()
     {
         $img = $this->manager()->make('iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWM8c+bMfwYiABMxikYVUk8hAHWzA3cRvs4UAAAAAElFTkSuQmCC');
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -93,7 +93,7 @@ class GdSystemTest extends TestCase
 
         $img = $this->manager()->make($data);
 
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -105,7 +105,7 @@ class GdSystemTest extends TestCase
     {
         if (function_exists('imagecreatefromwebp')) {
             $img = $this->manager()->make('tests/images/test.webp');
-            $this->assertInstanceOf('Intervention\Image\Image', $img);
+            $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
             $this->assertInternalType('resource', $img->getCore());
             $this->assertEquals(16, $img->getWidth());
             $this->assertEquals(16, $img->getHeight());
@@ -120,7 +120,7 @@ class GdSystemTest extends TestCase
     public function testCanvas()
     {
         $img = $this->manager()->canvas(30, 20);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -132,7 +132,7 @@ class GdSystemTest extends TestCase
     public function testCanvasWithSolidBackground()
     {
         $img = $this->manager()->canvas(30, 20, 'b53717');
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -145,7 +145,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $size = $img->getSize();
-        $this->assertInstanceOf('Intervention\Image\Size', $size);
+        $this->assertInstanceOf('Omt\ImageHelper\Size', $size);
         $this->assertInternalType('int', $size->width);
         $this->assertInternalType('int', $size->height);
         $this->assertEquals(16, $size->width);
@@ -156,7 +156,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/circle.png');
         $img->resize(120, 150);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -169,7 +169,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(120, null);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -182,7 +182,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(null, 150);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -195,7 +195,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(50, null, function ($constraint) { $constraint->aspectRatio(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -208,7 +208,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(null, 50, function ($constraint) { $constraint->aspectRatio(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -221,7 +221,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(100, 120, function ($constraint) { $constraint->aspectRatio(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -234,7 +234,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(100, 100, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -247,7 +247,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->widen(100);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -260,7 +260,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->widen(100, function ($constraint) {$constraint->upsize();});
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -273,7 +273,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->heighten(100);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -286,7 +286,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->heighten(100, function ($constraint) {$constraint->upsize();});
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('resource', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -656,7 +656,7 @@ class GdSystemTest extends TestCase
         // top-left anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-left', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -667,7 +667,7 @@ class GdSystemTest extends TestCase
         // top-left anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-left', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -678,7 +678,7 @@ class GdSystemTest extends TestCase
         // top anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -689,7 +689,7 @@ class GdSystemTest extends TestCase
         // top anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -700,7 +700,7 @@ class GdSystemTest extends TestCase
         // top-right anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-right', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -711,7 +711,7 @@ class GdSystemTest extends TestCase
         // top-right anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-right', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -722,7 +722,7 @@ class GdSystemTest extends TestCase
         // left anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'left', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -733,7 +733,7 @@ class GdSystemTest extends TestCase
         // left anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'left', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -746,7 +746,7 @@ class GdSystemTest extends TestCase
         // right anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'right', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -757,7 +757,7 @@ class GdSystemTest extends TestCase
         // right anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'right', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -772,7 +772,7 @@ class GdSystemTest extends TestCase
         // bottom-left anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-left', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -783,7 +783,7 @@ class GdSystemTest extends TestCase
         // bottom-left anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-left', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -794,7 +794,7 @@ class GdSystemTest extends TestCase
         // bottom anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -805,7 +805,7 @@ class GdSystemTest extends TestCase
         // bottom anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -821,7 +821,7 @@ class GdSystemTest extends TestCase
         // bottom-right anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-right', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -832,7 +832,7 @@ class GdSystemTest extends TestCase
         // bottom-right anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-right', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -843,7 +843,7 @@ class GdSystemTest extends TestCase
         // center anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'center', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -854,7 +854,7 @@ class GdSystemTest extends TestCase
         // center anchor coordinates / coordinates will be ignored for center
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'center', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -890,7 +890,7 @@ class GdSystemTest extends TestCase
         $resource = imagecreatefrompng('tests/images/tile.png');
         $img = $this->manager()->make('tests/images/trim.png');
         $img->insert($resource);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertColorAtPosition('#b4e000', $img, 0, 7);
         $this->assertColorAtPosition('#00aef0', $img, 0, 8);
         $this->assertColorAtPosition('#445160', $img, 8, 8);
@@ -903,7 +903,7 @@ class GdSystemTest extends TestCase
         $data = file_get_contents('tests/images/tile.png');
         $img = $this->manager()->make('tests/images/trim.png');
         $img->insert($data);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertColorAtPosition('#b4e000', $img, 0, 7);
         $this->assertColorAtPosition('#00aef0', $img, 0, 8);
         $this->assertColorAtPosition('#445160', $img, 8, 8);
@@ -916,7 +916,7 @@ class GdSystemTest extends TestCase
         $obj = $this->manager()->make('tests/images/tile.png');
         $img = $this->manager()->make('tests/images/trim.png');
         $img->insert($obj);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertColorAtPosition('#b4e000', $img, 0, 7);
         $this->assertColorAtPosition('#00aef0', $img, 0, 8);
         $this->assertColorAtPosition('#445160', $img, 8, 8);
@@ -981,14 +981,14 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->pixelate(20);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
     }
 
     public function testGreyscaleImage()
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->greyscale();
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertTransparentPosition($img, 8, 0);
         $this->assertColorAtPosition('#b9b9b9', $img, 0, 0);
     }
@@ -997,7 +997,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->invert();
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertTransparentPosition($img, 8, 0);
         $this->assertColorAtPosition('#4b1fff', $img, 0, 0);
     }
@@ -1006,7 +1006,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->blur(1);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
     }
 
     public function testFillImageWithColor()
@@ -1073,7 +1073,7 @@ class GdSystemTest extends TestCase
     {
         $img = $this->manager()->canvas(16, 16, 'ffffff');
         $img = $img->text('0', 3, 11);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertEquals('a9e2b15452b2a4637b65625188d206f6', $img->checksum());
 
 
@@ -1083,7 +1083,7 @@ class GdSystemTest extends TestCase
             $font->valign('top');
             $font->color('000000');
         });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertEquals('649f3f529d3931c56601155fd2680959', $img->checksum());
 
         $img = $this->manager()->canvas(16, 16, 'ffffff');
@@ -1093,7 +1093,7 @@ class GdSystemTest extends TestCase
             $font->file(2);
             $font->color('000000');
         });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertEquals('c0dda67589c46a90d78a97b891a811ee', $img->checksum());
     }
 
@@ -1638,7 +1638,7 @@ class GdSystemTest extends TestCase
     public function testFilter()
     {
         $img = $this->manager()->make('tests/images/trim.png');
-        $img->filter(new \Intervention\Image\Filters\DemoFilter(10));
+        $img->filter(new \Omt\ImageHelper\Filters\DemoFilter(10));
         $this->assertColorAtPosition('#818181', $img, 0, 0);
         $this->assertColorAtPosition('#939393', $img, 18, 18);
         $this->assertColorAtPosition('#939393', $img, 18, 18);
@@ -1656,7 +1656,7 @@ class GdSystemTest extends TestCase
         unset($img);
 
         // clone should be still intact
-        $this->assertInstanceOf('Intervention\Image\Image', $cln);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $cln);
         $this->assertInternalType('resource', $cln->getCore());
     }
 
@@ -1678,7 +1678,7 @@ class GdSystemTest extends TestCase
     {
         $pick = $img->pickColor($x, $y, 'hex');
         $this->assertEquals($color, $pick);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
     }
 
     private function assertTransparentPosition($img, $x, $y, $transparent = 0)
@@ -1690,7 +1690,7 @@ class GdSystemTest extends TestCase
 
     private function manager()
     {
-        return new \Intervention\Image\ImageManager([
+        return new \Omt\ImageHelper\ImageManager([
             'driver' => 'gd'
         ]);
     }

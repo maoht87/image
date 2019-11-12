@@ -7,7 +7,7 @@ class ImagickSystemTest extends TestCase
     public function testMakeFromPath()
     {
         $img = $this->manager()->make('tests/images/circle.png');
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -25,7 +25,7 @@ class ImagickSystemTest extends TestCase
     {
         $str = file_get_contents('tests/images/circle.png');
         $img = $this->manager()->make($str);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -39,7 +39,7 @@ class ImagickSystemTest extends TestCase
         $imagick = new \Imagick;
         $imagick->readImage('tests/images/circle.png');
         $img = $this->manager()->make($imagick);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -51,7 +51,7 @@ class ImagickSystemTest extends TestCase
     {
         $str = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWM8c+bMfwYiABMxikYVUk8hAHWzA3cRvs4UAAAAAElFTkSuQmCC';
         $img = $this->manager()->make($str);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -64,7 +64,7 @@ class ImagickSystemTest extends TestCase
     {
         $str = 'iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWM8c+bMfwYiABMxikYVUk8hAHWzA3cRvs4UAAAAAElFTkSuQmCC';
         $img = $this->manager()->make($str);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -80,7 +80,7 @@ class ImagickSystemTest extends TestCase
                 'cRvs4UAAAAAElFTkSuQmCC';
 
         $img = $this->manager()->make($data);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -93,7 +93,7 @@ class ImagickSystemTest extends TestCase
     public function testCanvas()
     {
         $img = $this->manager()->canvas(30, 20);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -105,7 +105,7 @@ class ImagickSystemTest extends TestCase
     public function testCanvasWithSolidBackground()
     {
         $img = $this->manager()->canvas(30, 20, 'b53717');
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -118,7 +118,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $size = $img->getSize();
-        $this->assertInstanceOf('Intervention\Image\Size', $size);
+        $this->assertInstanceOf('Omt\ImageHelper\Size', $size);
         $this->assertInternalType('int', $size->width);
         $this->assertInternalType('int', $size->height);
         $this->assertEquals(16, $size->width);
@@ -129,7 +129,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/circle.png');
         $img->resize(120, 150);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -142,7 +142,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(120, null);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -155,7 +155,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(null, 150);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -168,7 +168,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(50, null, function ($constraint) { $constraint->aspectRatio(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -181,7 +181,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(null, 50, function ($constraint) { $constraint->aspectRatio(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -194,7 +194,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(100, 120, function ($constraint) { $constraint->aspectRatio(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -207,7 +207,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->resize(100, 100, function ($constraint) { $constraint->aspectRatio(); $constraint->upsize(); });
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -220,7 +220,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->widen(100);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -233,7 +233,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->widen(100, function ($constraint) {$constraint->upsize();});
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -246,7 +246,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->heighten(100);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -259,7 +259,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->heighten(100, function ($constraint) {$constraint->upsize();});
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInstanceOf('Imagick', $img->getCore());
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
@@ -629,7 +629,7 @@ class ImagickSystemTest extends TestCase
         // top-left anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-left', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -640,7 +640,7 @@ class ImagickSystemTest extends TestCase
         // top-left anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-left', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -651,7 +651,7 @@ class ImagickSystemTest extends TestCase
         // top anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -662,7 +662,7 @@ class ImagickSystemTest extends TestCase
         // top anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -673,7 +673,7 @@ class ImagickSystemTest extends TestCase
         // top-right anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-right', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -684,7 +684,7 @@ class ImagickSystemTest extends TestCase
         // top-right anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'top-right', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -695,7 +695,7 @@ class ImagickSystemTest extends TestCase
         // left anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'left', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -706,7 +706,7 @@ class ImagickSystemTest extends TestCase
         // left anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'left', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -719,7 +719,7 @@ class ImagickSystemTest extends TestCase
         // right anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'right', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -730,7 +730,7 @@ class ImagickSystemTest extends TestCase
         // right anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'right', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -745,7 +745,7 @@ class ImagickSystemTest extends TestCase
         // bottom-left anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-left', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -756,7 +756,7 @@ class ImagickSystemTest extends TestCase
         // bottom-left anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-left', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -767,7 +767,7 @@ class ImagickSystemTest extends TestCase
         // bottom anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -778,7 +778,7 @@ class ImagickSystemTest extends TestCase
         // bottom anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -794,7 +794,7 @@ class ImagickSystemTest extends TestCase
         // bottom-right anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-right', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -805,7 +805,7 @@ class ImagickSystemTest extends TestCase
         // bottom-right anchor coordinates
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'bottom-right', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -816,7 +816,7 @@ class ImagickSystemTest extends TestCase
         // center anchor
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'center', 0, 0);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -827,7 +827,7 @@ class ImagickSystemTest extends TestCase
         // center anchor coordinates / coordinates will be ignored for center
         $img = $this->manager()->canvas(32, 32, '#ff0000'); // create canvas
         $img->insert($watermark, 'center', 10, 10);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertInternalType('int', $img->getWidth());
         $this->assertInternalType('int', $img->getHeight());
         $this->assertEquals($img->getWidth(), 32);
@@ -864,7 +864,7 @@ class ImagickSystemTest extends TestCase
         $imagick->readImage('tests/images/tile.png');
         $img = $this->manager()->make('tests/images/trim.png');
         $img->insert($imagick);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertColorAtPosition('#b4e000', $img, 0, 7);
         $this->assertColorAtPosition('#00aef0', $img, 0, 8);
         $this->assertColorAtPosition('#445160', $img, 8, 8);
@@ -877,7 +877,7 @@ class ImagickSystemTest extends TestCase
         $data = file_get_contents('tests/images/tile.png');
         $img = $this->manager()->make('tests/images/trim.png');
         $img->insert($data);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertColorAtPosition('#b4e000', $img, 0, 7);
         $this->assertColorAtPosition('#00aef0', $img, 0, 8);
         $this->assertColorAtPosition('#445160', $img, 8, 8);
@@ -890,7 +890,7 @@ class ImagickSystemTest extends TestCase
         $obj = $this->manager()->make('tests/images/tile.png');
         $img = $this->manager()->make('tests/images/trim.png');
         $img->insert($obj);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertColorAtPosition('#b4e000', $img, 0, 7);
         $this->assertColorAtPosition('#00aef0', $img, 0, 8);
         $this->assertColorAtPosition('#445160', $img, 8, 8);
@@ -954,14 +954,14 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->pixelate(20);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
     }
 
     public function testGreyscaleImage()
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->greyscale();
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertTransparentPosition($img, 8, 0);
         $this->assertColorAtPosition('#707070', $img, 0, 0);
     }
@@ -970,7 +970,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->invert();
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
         $this->assertTransparentPosition($img, 8, 0);
         $this->assertColorAtPosition('#4b1fff', $img, 0, 0);
     }
@@ -979,7 +979,7 @@ class ImagickSystemTest extends TestCase
     {
         $img = $this->manager()->make('tests/images/tile.png');
         $img->blur(1);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
     }
 
     public function testFillImageWithColor()
@@ -1595,8 +1595,8 @@ class ImagickSystemTest extends TestCase
     public function testFilter()
     {
         $img = $this->manager()->make('tests/images/trim.png');
-        $img->filter(new \Intervention\Image\Filters\DemoFilter(10));
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $img->filter(new \Omt\ImageHelper\Filters\DemoFilter(10));
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
     }
 
     public function testCloneImageObject()
@@ -1609,7 +1609,7 @@ class ImagickSystemTest extends TestCase
         unset($img);
 
         // clone should be still intact
-        $this->assertInstanceOf('Intervention\Image\Image', $cln);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $cln);
         $this->assertInstanceOf('Imagick', $cln->getCore());
     }
 
@@ -1631,7 +1631,7 @@ class ImagickSystemTest extends TestCase
     {
         $pick = $img->pickColor($x, $y, 'hex');
         $this->assertEquals($color, $pick);
-        $this->assertInstanceOf('Intervention\Image\Image', $img);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $img);
     }
 
     private function assertTransparentPosition($img, $x, $y, $transparent = 0)
@@ -1643,7 +1643,7 @@ class ImagickSystemTest extends TestCase
 
     private function manager()
     {
-        return new \Intervention\Image\ImageManager([
+        return new \Omt\ImageHelper\ImageManager([
             'driver' => 'imagick'
         ]);
     }

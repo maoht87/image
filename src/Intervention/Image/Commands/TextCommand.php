@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 use Closure;
 
@@ -8,7 +8,7 @@ class TextCommand extends AbstractCommand
 {
     /**
      * Write text on given image
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)
@@ -18,7 +18,7 @@ class TextCommand extends AbstractCommand
         $y = $this->argument(2)->type('numeric')->value(0);
         $callback = $this->argument(3)->type('closure')->value();
 
-        $fontclassname = sprintf('\Intervention\Image\%s\Font',
+        $fontclassname = sprintf('\Omt\ImageHelper\%s\Font',
             $image->getDriver()->getDriverName());
 
         $font = new $fontclassname($text);

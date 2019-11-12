@@ -10,11 +10,11 @@ class AbstractColorTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\NotSupportedException
+     * @expectedException \Omt\ImageHelper\Exception\NotSupportedException
      */
     public function testFormatUnknown()
     {
-        $color = $this->getMockForAbstractClass('\Intervention\Image\AbstractColor');
+        $color = $this->getMockForAbstractClass('\Omt\ImageHelper\AbstractColor');
         $color->format('xxxxxxxxxxxxxxxxxxxxxxx');
     }
 }

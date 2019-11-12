@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\File;
+use Omt\ImageHelper\File;
 use PHPUnit\Framework\TestCase;
 
 class FileTest extends TestCase

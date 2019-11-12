@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -51,7 +51,7 @@ class ImageServiceProviderLaravelRecent extends ServiceProvider
             return new ImageManager($this->getImageConfig($app));
         });
 
-        $app->alias('image', 'Intervention\Image\ImageManager');
+        $app->alias('image', 'Omt\ImageHelper\ImageManager');
     }
 
     /**
@@ -81,7 +81,7 @@ class ImageServiceProviderLaravelRecent extends ServiceProvider
 
             // route to access template applied image file
             $app['router']->get(config('imagecache.route').'/{template}/{filename}', [
-                'uses' => 'Intervention\Image\ImageCacheController@getResponse',
+                'uses' => 'Omt\ImageHelper\ImageCacheController@getResponse',
                 'as' => 'imagecache'
             ])->where(['filename' => $filename_pattern]);
         }

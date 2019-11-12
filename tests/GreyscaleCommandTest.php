@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\GreyscaleCommand as GreyscaleGd;
-use Intervention\Image\Imagick\Commands\GreyscaleCommand as GreyscaleImagick;
+use Omt\ImageHelper\Gd\Commands\GreyscaleCommand as GreyscaleGd;
+use Omt\ImageHelper\Imagick\Commands\GreyscaleCommand as GreyscaleImagick;
 use PHPUnit\Framework\TestCase;
 
 class GreyscaleCommandTest extends TestCase
@@ -14,7 +14,7 @@ class GreyscaleCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $command = new GreyscaleGd([]);
         $result = $command->execute($image);
@@ -25,7 +25,7 @@ class GreyscaleCommandTest extends TestCase
     {
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('modulateimage')->with(100, 0, 100)->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $command = new GreyscaleImagick([]);
         $result = $command->execute($image);

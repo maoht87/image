@@ -1,16 +1,16 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 use Closure;
-use Intervention\Image\Exception\InvalidArgumentException;
+use Omt\ImageHelper\Exception\InvalidArgumentException;
 
 class PolygonCommand extends AbstractCommand
 {
     /**
      * Draw a polygon on given image
      *
-     * @param  \Intervention\Image\image $image
+     * @param  \Omt\ImageHelper\image $image
      * @return boolean
      */
     public function execute($image)
@@ -33,7 +33,7 @@ class PolygonCommand extends AbstractCommand
             );
         }
         
-        $polygon_classname = sprintf('\Intervention\Image\%s\Shapes\PolygonShape',
+        $polygon_classname = sprintf('\Omt\ImageHelper\%s\Shapes\PolygonShape',
             $image->getDriver()->getDriverName());
 
         $polygon = new $polygon_classname($points);

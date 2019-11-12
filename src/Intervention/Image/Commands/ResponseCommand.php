@@ -1,15 +1,15 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
-use Intervention\Image\Response;
+use Omt\ImageHelper\Response;
 
 class ResponseCommand extends AbstractCommand
 {
     /**
      * Builds HTTP response from given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

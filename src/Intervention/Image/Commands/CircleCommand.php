@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 use Closure;
 
@@ -9,7 +9,7 @@ class CircleCommand extends AbstractCommand
     /**
      * Draw a circle centered on given image
      *
-     * @param  \Intervention\Image\image $image
+     * @param  \Omt\ImageHelper\image $image
      * @return boolean
      */
     public function execute($image)
@@ -19,7 +19,7 @@ class CircleCommand extends AbstractCommand
         $y = $this->argument(2)->type('numeric')->required()->value();
         $callback = $this->argument(3)->type('closure')->value();
 
-        $circle_classname = sprintf('\Intervention\Image\%s\Shapes\CircleShape',
+        $circle_classname = sprintf('\Omt\ImageHelper\%s\Shapes\CircleShape',
             $image->getDriver()->getDriverName());
 
         $circle = new $circle_classname($diameter);

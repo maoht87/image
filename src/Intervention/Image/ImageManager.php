@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Closure;
-use Intervention\Image\Exception\MissingDependencyException;
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\Exception\MissingDependencyException;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
 class ImageManager
 {
@@ -47,7 +47,7 @@ class ImageManager
      *
      * @param  mixed $data
      *
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function make($data)
     {
@@ -61,7 +61,7 @@ class ImageManager
      * @param  int   $height
      * @param  mixed $background
      *
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function canvas($width, $height, $background = null)
     {
@@ -100,7 +100,7 @@ class ImageManager
     /**
      * Creates a driver instance according to config settings
      *
-     * @return \Intervention\Image\AbstractDriver
+     * @return \Omt\ImageHelper\AbstractDriver
      */
     private function createDriver()
     {

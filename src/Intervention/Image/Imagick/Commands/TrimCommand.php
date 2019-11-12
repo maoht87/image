@@ -1,16 +1,16 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Omt\ImageHelper\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Imagick\Color;
+use Omt\ImageHelper\Commands\AbstractCommand;
+use Omt\ImageHelper\Imagick\Color;
 
 class TrimCommand extends AbstractCommand
 {
     /**
      * Trims away parts of an image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

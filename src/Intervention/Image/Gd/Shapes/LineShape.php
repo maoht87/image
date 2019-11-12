@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Shapes;
+namespace Omt\ImageHelper\Gd\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Gd\Color;
-use Intervention\Image\Image;
+use Omt\ImageHelper\AbstractShape;
+use Omt\ImageHelper\Gd\Color;
+use Omt\ImageHelper\Image;
 
 class LineShape extends AbstractShape
 {
@@ -67,7 +67,7 @@ class LineShape extends AbstractShape
      */
     public function width($width)
     {
-        throw new \Intervention\Image\Exception\NotSupportedException(
+        throw new \Omt\ImageHelper\Exception\NotSupportedException(
             "Line width is not supported by GD driver."
         );
     }

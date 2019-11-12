@@ -11,7 +11,7 @@ class AbstractShapeTest extends TestCase
 
     public function testBackground()
     {
-        $shape = $this->getMockForAbstractClass('\Intervention\Image\AbstractShape');
+        $shape = $this->getMockForAbstractClass('\Omt\ImageHelper\AbstractShape');
         $shape->background('foo');
         $this->assertEquals('foo', $shape->background);
         $this->assertEquals(0, $shape->border_width);
@@ -19,7 +19,7 @@ class AbstractShapeTest extends TestCase
 
     public function testBorder()
     {
-        $shape = $this->getMockForAbstractClass('\Intervention\Image\AbstractShape');
+        $shape = $this->getMockForAbstractClass('\Omt\ImageHelper\AbstractShape');
         $shape->border(4);
         $this->assertEquals(4, $shape->border_width);
         $this->assertEquals('#000000', $shape->border_color);
@@ -27,7 +27,7 @@ class AbstractShapeTest extends TestCase
 
     public function testBorderWithColor()
     {
-        $shape = $this->getMockForAbstractClass('\Intervention\Image\AbstractShape');
+        $shape = $this->getMockForAbstractClass('\Omt\ImageHelper\AbstractShape');
         $shape->border(3, '#ff00ff');
         $this->assertEquals(3, $shape->border_width);
         $this->assertEquals('#ff00ff', $shape->border_color);
@@ -35,7 +35,7 @@ class AbstractShapeTest extends TestCase
 
     public function testHasBorder()
     {
-        $shape = $this->getMockForAbstractClass('\Intervention\Image\AbstractShape');
+        $shape = $this->getMockForAbstractClass('\Omt\ImageHelper\AbstractShape');
         $this->assertFalse($shape->hasBorder());
         $shape->border(1);
         $this->assertTrue($shape->hasBorder());

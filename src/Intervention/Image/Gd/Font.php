@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Omt\ImageHelper\Gd;
 
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Omt\ImageHelper\Exception\NotSupportedException;
+use Omt\ImageHelper\Image;
 
-class Font extends \Intervention\Image\AbstractFont
+class Font extends \Omt\ImageHelper\AbstractFont
 {
     /**
      * Get font size in points

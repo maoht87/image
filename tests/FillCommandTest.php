@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\FillCommand as FillGd;
-use Intervention\Image\Imagick\Commands\FillCommand as FillImagick;
+use Omt\ImageHelper\Gd\Commands\FillCommand as FillGd;
+use Omt\ImageHelper\Imagick\Commands\FillCommand as FillImagick;
 use PHPUnit\Framework\TestCase;
 
 class FillCommandTest extends TestCase
@@ -14,7 +14,7 @@ class FillCommandTest extends TestCase
     public function testGdFill()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('getWidth')->once()->andReturn(800);
         $image->shouldReceive('getHeight')->once()->andReturn(600);
@@ -26,7 +26,7 @@ class FillCommandTest extends TestCase
     public function testGdFillArray()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('getWidth')->once()->andReturn(800);
         $image->shouldReceive('getHeight')->once()->andReturn(600);
@@ -38,7 +38,7 @@ class FillCommandTest extends TestCase
     public function testGdFillArrayWithAlpha()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('getWidth')->once()->andReturn(800);
         $image->shouldReceive('getHeight')->once()->andReturn(600);
@@ -49,9 +49,9 @@ class FillCommandTest extends TestCase
 
     public function testGdFillWithCoordinates()
     {
-        $driver = Mockery::mock('\Intervention\Image\Gd\Driver');
+        $driver = Mockery::mock('\Omt\ImageHelper\Gd\Driver');
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getDriver')->once()->andReturn($driver);
         $image->shouldReceive('getCore')->times(2)->andReturn($resource);
         $image->shouldReceive('getWidth')->once()->andReturn(800);
@@ -67,7 +67,7 @@ class FillCommandTest extends TestCase
     {
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('drawimage')->once()->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getWidth')->once()->andReturn(800);
         $image->shouldReceive('getHeight')->once()->andReturn(600);
         $image->shouldReceive('getCore')->andReturn($imagick);
@@ -82,7 +82,7 @@ class FillCommandTest extends TestCase
         $imagick->shouldReceive('getimagepixelcolor')->once()->andReturn('#000000');
         $imagick->shouldReceive('transparentpaintimage')->once()->andReturn(true);
         $imagick->shouldReceive('compositeimage')->times(3)->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->andReturn($imagick);
         $image->shouldReceive('getWidth')->andReturn(800);
         $image->shouldReceive('getHeight')->andReturn(600);

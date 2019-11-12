@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\DestroyCommand as DestroyGd;
-use Intervention\Image\Imagick\Commands\DestroyCommand as DestroyImagick;
+use Omt\ImageHelper\Gd\Commands\DestroyCommand as DestroyGd;
+use Omt\ImageHelper\Imagick\Commands\DestroyCommand as DestroyImagick;
 use PHPUnit\Framework\TestCase;
 
 class DestroyCommandTest extends TestCase
@@ -19,7 +19,7 @@ class DestroyCommandTest extends TestCase
             imagecreatefrompng(__DIR__.'/images/tile.png')
         ];
 
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('getBackups')->once()->andReturn($backups);
         $command = new DestroyGd([]);
@@ -36,7 +36,7 @@ class DestroyCommandTest extends TestCase
         $backup->shouldReceive('clear')->with()->andReturn(true);
         $backups = [$backup];
 
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $image->shouldReceive('getBackups')->once()->andReturn($backups);
         $command = new DestroyImagick([]);

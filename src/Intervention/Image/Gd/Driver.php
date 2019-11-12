@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Omt\ImageHelper\Gd;
 
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Omt\ImageHelper\Exception\NotSupportedException;
+use Omt\ImageHelper\Image;
 
-class Driver extends \Intervention\Image\AbstractDriver
+class Driver extends \Omt\ImageHelper\AbstractDriver
 {
     /**
      * Creates new instance of driver
@@ -31,7 +31,7 @@ class Driver extends \Intervention\Image\AbstractDriver
      * @param  int     $width
      * @param  int     $height
      * @param  mixed   $background
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function newImage($width, $height, $background = null)
     {

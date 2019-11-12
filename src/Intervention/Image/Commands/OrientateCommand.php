@@ -1,13 +1,13 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
 class OrientateCommand extends AbstractCommand
 {
     /**
      * Correct image orientation according to Exif data
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

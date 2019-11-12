@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
-use Intervention\Image\Exception\InvalidArgumentException;
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\Exception\InvalidArgumentException;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
 abstract class AbstractEncoder
 {

@@ -1,5 +1,5 @@
 <?php
-use Intervention\Image\Commands\PsrResponseCommand;
+use Omt\ImageHelper\Commands\PsrResponseCommand;
 use PHPUnit\Framework\TestCase;
 
 class PsrResponseCommandTest extends TestCase
@@ -14,7 +14,7 @@ class PsrResponseCommandTest extends TestCase
         //We know for sure that mimetype will be "application/xml"
         $encodedContent = '<?xml version="1.0" encoding="UTF-8"?>';
 
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $stream = \GuzzleHttp\Psr7\stream_for($encodedContent);
 
         $image->shouldReceive('stream')

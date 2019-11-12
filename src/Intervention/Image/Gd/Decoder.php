@@ -1,18 +1,18 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Omt\ImageHelper\Gd;
 
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Omt\ImageHelper\Exception\NotReadableException;
+use Omt\ImageHelper\Exception\NotSupportedException;
+use Omt\ImageHelper\Image;
 
-class Decoder extends \Intervention\Image\AbstractDecoder
+class Decoder extends \Omt\ImageHelper\AbstractDecoder
 {
     /**
      * Initiates new image from path in filesystem
      *
      * @param  string $path
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromPath($path)
     {
@@ -81,7 +81,7 @@ class Decoder extends \Intervention\Image\AbstractDecoder
      * Initiates new image from GD resource
      *
      * @param  Resource $resource
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromGdResource($resource)
     {
@@ -92,7 +92,7 @@ class Decoder extends \Intervention\Image\AbstractDecoder
      * Initiates new image from Imagick object
      *
      * @param  Imagick $object
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromImagick(\Imagick $object)
     {
@@ -105,7 +105,7 @@ class Decoder extends \Intervention\Image\AbstractDecoder
      * Initiates new image from binary data
      *
      * @param  string $data
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromBinary($binary)
     {

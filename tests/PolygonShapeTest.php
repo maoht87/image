@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Shapes\PolygonShape as PolygonGd;
-use Intervention\Image\Imagick\Shapes\PolygonShape as PolygonImagick;
+use Omt\ImageHelper\Gd\Shapes\PolygonShape as PolygonGd;
+use Omt\ImageHelper\Imagick\Shapes\PolygonShape as PolygonImagick;
 use PHPUnit\Framework\TestCase;
 
 class PolygonShapeTest extends TestCase
@@ -14,7 +14,7 @@ class PolygonShapeTest extends TestCase
     public function testGdConstructor()
     {
         $polygon = new PolygonGd([1, 2, 3, 4, 5, 6]);
-        $this->assertInstanceOf('Intervention\Image\Gd\Shapes\PolygonShape', $polygon);
+        $this->assertInstanceOf('Omt\ImageHelper\Gd\Shapes\PolygonShape', $polygon);
         $this->assertEquals([1, 2, 3, 4, 5, 6], $polygon->points);
 
     }
@@ -22,18 +22,18 @@ class PolygonShapeTest extends TestCase
     public function testGdApplyToImage()
     {
         $core = imagecreatetruecolor(300, 200);
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($core);
         $polygon = new PolygonGd([1, 2, 3, 4, 5, 6]);
         $result = $polygon->applyToImage($image);
-        $this->assertInstanceOf('Intervention\Image\Gd\Shapes\PolygonShape', $polygon);
+        $this->assertInstanceOf('Omt\ImageHelper\Gd\Shapes\PolygonShape', $polygon);
         $this->assertTrue($result);
     }
 
     public function testImagickConstructor()
     {
         $polygon = new PolygonImagick([1, 2, 3, 4, 5, 6]);
-        $this->assertInstanceOf('Intervention\Image\Imagick\Shapes\PolygonShape', $polygon);
+        $this->assertInstanceOf('Omt\ImageHelper\Imagick\Shapes\PolygonShape', $polygon);
         $this->assertEquals([
             ['x' => 1, 'y' => 2],
             ['x' => 3, 'y' => 4],
@@ -46,11 +46,11 @@ class PolygonShapeTest extends TestCase
     {
         $core = Mockery::mock('\Imagick');
         $core->shouldReceive('drawimage')->once();
-        $image = Mockery::mock('\Intervention\Image\Image');
+        $image = Mockery::mock('\Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($core);
         $polygon = new PolygonImagick([1, 2, 3, 4, 5, 6]);
         $result = $polygon->applyToImage($image);
-        $this->assertInstanceOf('Intervention\Image\Imagick\Shapes\PolygonShape', $polygon);
+        $this->assertInstanceOf('Omt\ImageHelper\Imagick\Shapes\PolygonShape', $polygon);
         $this->assertTrue($result);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\ImageManager;
+use Omt\ImageHelper\ImageManager;
 use PHPUnit\Framework\TestCase;
 
 class ImageManagerTest extends TestCase
@@ -30,11 +30,11 @@ class ImageManagerTest extends TestCase
 
     public function testConfigureObject()
     {
-        $config = ['driver' => new Intervention\Image\Imagick\Driver()];
+        $config = ['driver' => new Omt\ImageHelper\Imagick\Driver()];
         $manager = new ImageManager($config);
 
         $image = $manager->make('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-        $this->assertInstanceOf('Intervention\Image\Image', $image);
+        $this->assertInstanceOf('Omt\ImageHelper\Image', $image);
         $this->assertInstanceOf('Imagick', $image->getCore());
     }
 }

@@ -96,7 +96,7 @@ class AbstractDecoderTest extends TestCase
         $source = $this->getTestDecoder(1);
         $this->assertFalse($source->isInterventionImage());
 
-        $img = Mockery::mock('Intervention\Image\Image');
+        $img = Mockery::mock('Omt\ImageHelper\Image');
         $source = $this->getTestDecoder($img);
         $this->assertTrue($source->isInterventionImage());
     }
@@ -155,6 +155,6 @@ class AbstractDecoderTest extends TestCase
 
     public function getTestDecoder($data)
     {
-        return $this->getMockForAbstractClass('\Intervention\Image\AbstractDecoder', [$data]);
+        return $this->getMockForAbstractClass('\Omt\ImageHelper\AbstractDecoder', [$data]);
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
 class IptcCommand extends AbstractCommand
 {
     /**
      * Read Iptc data from the given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

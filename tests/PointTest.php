@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Point;
+use Omt\ImageHelper\Point;
 use PHPUnit\Framework\TestCase;
 
 class PointTest extends TestCase
@@ -8,7 +8,7 @@ class PointTest extends TestCase
     public function testConstructor()
     {
         $point = new Point;
-        $this->assertInstanceOf('Intervention\Image\Point', $point);
+        $this->assertInstanceOf('Omt\ImageHelper\Point', $point);
         $this->assertEquals(0, $point->x);
         $this->assertEquals(0, $point->y);
     }
@@ -16,7 +16,7 @@ class PointTest extends TestCase
     public function testConstructorWithParameters()
     {
         $point = new Point(40, 50);
-        $this->assertInstanceOf('Intervention\Image\Point', $point);
+        $this->assertInstanceOf('Omt\ImageHelper\Point', $point);
         $this->assertEquals(40, $point->x);
         $this->assertEquals(50, $point->y);
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image;
+namespace Omt\ImageHelper;
 
 use Closure;
-use Intervention\Image\Exception\InvalidArgumentException;
+use Omt\ImageHelper\Exception\InvalidArgumentException;
 
 class Size
 {
@@ -207,7 +207,7 @@ class Size
      * based on the pivot point settings of both sizes.
      *
      * @param  Size   $size
-     * @return \Intervention\Image\Point
+     * @return \Omt\ImageHelper\Point
      */
     public function relativePosition(Size $size)
     {
@@ -221,7 +221,7 @@ class Size
      * Resize given Size to best fitting size of current size.
      *
      * @param  Size   $size
-     * @return \Intervention\Image\Size
+     * @return \Omt\ImageHelper\Size
      */
     public function fit(Size $size, $position = 'center')
     {
@@ -274,7 +274,7 @@ class Size
      * @param  string  $position
      * @param  int     $offset_x
      * @param  int     $offset_y
-     * @return \Intervention\Image\Size
+     * @return \Omt\ImageHelper\Size
      */
     public function align($position, $offset_x = 0, $offset_y = 0)
     {
@@ -359,7 +359,7 @@ class Size
      * Runs constraints on current size
      *
      * @param  Closure $callback
-     * @return \Intervention\Image\Constraint
+     * @return \Omt\ImageHelper\Constraint
      */
     private function getConstraint(Closure $callback = null)
     {

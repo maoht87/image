@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Filters;
+namespace Omt\ImageHelper\Filters;
 
-use Intervention\Image\Image;
+use Omt\ImageHelper\Image;
 
 class DemoFilter implements FilterInterface
 {
@@ -31,8 +31,8 @@ class DemoFilter implements FilterInterface
     /**
      * Applies filter effects to given image
      *
-     * @param  \Intervention\Image\Image $image
-     * @return \Intervention\Image\Image
+     * @param  \Omt\ImageHelper\Image $image
+     * @return \Omt\ImageHelper\Image
      */
     public function applyFilter(Image $image)
     {

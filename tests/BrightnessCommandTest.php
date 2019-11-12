@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\BrightnessCommand as BrightnessGd;
-use Intervention\Image\Imagick\Commands\BrightnessCommand as BrightnessImagick;
+use Omt\ImageHelper\Gd\Commands\BrightnessCommand as BrightnessGd;
+use Omt\ImageHelper\Imagick\Commands\BrightnessCommand as BrightnessImagick;
 use PHPUnit\Framework\TestCase;
 
 class BrightnessCommandTest extends TestCase
@@ -14,7 +14,7 @@ class BrightnessCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $command = new BrightnessGd([12]);
         $result = $command->execute($image);
@@ -25,7 +25,7 @@ class BrightnessCommandTest extends TestCase
     {
         $imagick = Mockery::mock('Imagick');
         $imagick->shouldReceive('modulateimage')->with(112, 100, 100)->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getCore')->once()->andReturn($imagick);
         $command = new BrightnessImagick([12]);
         $result = $command->execute($image);

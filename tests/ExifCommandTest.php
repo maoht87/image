@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Image;
-use Intervention\Image\Commands\ExifCommand;
+use Omt\ImageHelper\Image;
+use Omt\ImageHelper\Commands\ExifCommand;
 use PHPUnit\Framework\TestCase;
 
 class ExifCommandTest extends TestCase
@@ -62,7 +62,7 @@ class ExifCommandTest extends TestCase
     public function testImagickFetchAll()
     {
         $image = $this->imagick()->make(__DIR__.'/images/exif.jpg');
-        $command = new \Intervention\Image\Imagick\Commands\ExifCommand([]);
+        $command = new \Omt\ImageHelper\Imagick\Commands\ExifCommand([]);
         $command->dontPreferExtension();
         $result = $command->execute($image);
         $this->assertTrue($result);
@@ -74,7 +74,7 @@ class ExifCommandTest extends TestCase
     public function testImagickFetchDefined()
     {
         $image = $this->imagick()->make(__DIR__.'/images/exif.jpg');
-        $command = new \Intervention\Image\Imagick\Commands\ExifCommand(['Artist']);
+        $command = new \Omt\ImageHelper\Imagick\Commands\ExifCommand(['Artist']);
         $command->dontPreferExtension();
         $result = $command->execute($image);
         $this->assertTrue($result);
@@ -85,7 +85,7 @@ class ExifCommandTest extends TestCase
     public function testImagickNonExisting()
     {
         $image = $this->imagick()->make(__DIR__.'/images/exif.jpg');
-        $command = new \Intervention\Image\Imagick\Commands\ExifCommand(['xx']);
+        $command = new \Omt\ImageHelper\Imagick\Commands\ExifCommand(['xx']);
         $command->dontPreferExtension();
         $result = $command->execute($image);
         $this->assertTrue($result);
@@ -96,7 +96,7 @@ class ExifCommandTest extends TestCase
     public function testImagickFallbackToExifExtenstion()
     {
         $image = $this->imagick()->make(__DIR__.'/images/exif.jpg');
-        $command = new \Intervention\Image\Imagick\Commands\ExifCommand(['Artist']);
+        $command = new \Omt\ImageHelper\Imagick\Commands\ExifCommand(['Artist']);
         $result = $command->execute($image);
         $this->assertTrue($result);
         $this->assertTrue($command->hasOutput());
@@ -105,7 +105,7 @@ class ExifCommandTest extends TestCase
 
     private function imagick()
     {
-        return new \Intervention\Image\ImageManager([
+        return new \Omt\ImageHelper\ImageManager([
             'driver' => 'imagick'
         ]);
     }

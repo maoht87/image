@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Omt\ImageHelper\Imagick;
 
-use Intervention\Image\AbstractDecoder;
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Omt\ImageHelper\AbstractDecoder;
+use Omt\ImageHelper\Exception\NotReadableException;
+use Omt\ImageHelper\Exception\NotSupportedException;
+use Omt\ImageHelper\Image;
 
 class Decoder extends AbstractDecoder
 {
@@ -13,7 +13,7 @@ class Decoder extends AbstractDecoder
      * Initiates new image from path in filesystem
      *
      * @param  string $path
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromPath($path)
     {
@@ -26,7 +26,7 @@ class Decoder extends AbstractDecoder
             $core->setImageType(defined('\Imagick::IMGTYPE_TRUECOLORALPHA') ? \Imagick::IMGTYPE_TRUECOLORALPHA : \Imagick::IMGTYPE_TRUECOLORMATTE);
 
         } catch (\ImagickException $e) {
-            throw new \Intervention\Image\Exception\NotReadableException(
+            throw new \Omt\ImageHelper\Exception\NotReadableException(
                 "Unable to read image from path ({$path}).",
                 0,
                 $e
@@ -44,7 +44,7 @@ class Decoder extends AbstractDecoder
      * Initiates new image from GD resource
      *
      * @param  Resource $resource
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromGdResource($resource)
     {
@@ -57,7 +57,7 @@ class Decoder extends AbstractDecoder
      * Initiates new image from Imagick object
      *
      * @param  Imagick $object
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromImagick(\Imagick $object)
     {
@@ -75,7 +75,7 @@ class Decoder extends AbstractDecoder
      * Initiates new image from binary data
      *
      * @param  string $data
-     * @return \Intervention\Image\Image
+     * @return \Omt\ImageHelper\Image
      */
     public function initFromBinary($binary)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Imagick\Shapes;
+namespace Omt\ImageHelper\Imagick\Shapes;
 
-use Intervention\Image\Image;
+use Omt\ImageHelper\Image;
 
 class CircleShape extends EllipseShape
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Omt\ImageHelper\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Size;
+use Omt\ImageHelper\Commands\AbstractCommand;
+use Omt\ImageHelper\Size;
 
 class GetSizeCommand extends AbstractCommand
 {
     /**
      * Reads size of given image instance in pixels
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return boolean
      */
     public function execute($image)

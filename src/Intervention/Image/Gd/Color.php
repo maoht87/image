@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Omt\ImageHelper\Gd;
 
-use Intervention\Image\AbstractColor;
-use Intervention\Image\Exception\NotSupportedException;
+use Omt\ImageHelper\AbstractColor;
+use Omt\ImageHelper\Exception\NotSupportedException;
 
 class Color extends AbstractColor
 {
@@ -39,7 +39,7 @@ class Color extends AbstractColor
      * Initiates color object from integer
      *
      * @param  int $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Omt\ImageHelper\AbstractColor
      */
     public function initFromInteger($value)
     {
@@ -53,7 +53,7 @@ class Color extends AbstractColor
      * Initiates color object from given array
      *
      * @param  array $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Omt\ImageHelper\AbstractColor
      */
     public function initFromArray($array)
     {
@@ -82,7 +82,7 @@ class Color extends AbstractColor
      * Initiates color object from given string
      *
      * @param  string $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Omt\ImageHelper\AbstractColor
      */
     public function initFromString($value)
     {
@@ -100,7 +100,7 @@ class Color extends AbstractColor
      * @param  int $r
      * @param  int $g
      * @param  int $b
-     * @return \Intervention\Image\AbstractColor
+     * @return \Omt\ImageHelper\AbstractColor
      */
     public function initFromRgb($r, $g, $b)
     {
@@ -117,7 +117,7 @@ class Color extends AbstractColor
      * @param  int     $g
      * @param  int     $b
      * @param  float   $a
-     * @return \Intervention\Image\AbstractColor
+     * @return \Omt\ImageHelper\AbstractColor
      */
     public function initFromRgba($r, $g, $b, $a = 1)
     {
@@ -131,7 +131,7 @@ class Color extends AbstractColor
      * Initiates color object from given ImagickPixel object
      *
      * @param  ImagickPixel $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Omt\ImageHelper\AbstractColor
      */
     public function initFromObject($value)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Omt\ImageHelper\Commands;
 
-use Intervention\Image\Commands\Argument;
+use Omt\ImageHelper\Commands\Argument;
 
 abstract class AbstractCommand
 {
@@ -23,7 +23,7 @@ abstract class AbstractCommand
     /**
      * Executes current command on given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param  \Omt\ImageHelper\Image $image
      * @return mixed
      */
     abstract public function execute($image);
@@ -42,7 +42,7 @@ abstract class AbstractCommand
      * Creates new argument instance from given argument key
      *
      * @param  int $key
-     * @return \Intervention\Image\Commands\Argument
+     * @return \Omt\ImageHelper\Commands\Argument
      */
     public function argument($key)
     {

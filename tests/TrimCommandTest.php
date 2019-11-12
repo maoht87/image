@@ -1,7 +1,7 @@
 <?php
 
-use Intervention\Image\Gd\Commands\TrimCommand as TrimGd;
-use Intervention\Image\Imagick\Commands\TrimCommand as TrimImagick;
+use Omt\ImageHelper\Gd\Commands\TrimCommand as TrimGd;
+use Omt\ImageHelper\Imagick\Commands\TrimCommand as TrimImagick;
 use PHPUnit\Framework\TestCase;
 
 class TrimCommandTest extends TestCase
@@ -14,8 +14,8 @@ class TrimCommandTest extends TestCase
     public function testGd()
     {
         $resource = imagecreatefromjpeg(__DIR__.'/images/test.jpg');
-        $image = Mockery::mock('Intervention\Image\Image');
-        $baseColor = Mockery::mock('Intervention\Image\Gd\Color');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
+        $baseColor = Mockery::mock('Omt\ImageHelper\Gd\Color');
         $baseColor->shouldReceive('differs')->with($baseColor, 45)->andReturn(true);
         $image->shouldReceive('getCore')->once()->andReturn($resource);
         $image->shouldReceive('getWidth')->once()->andReturn(800);
@@ -31,7 +31,7 @@ class TrimCommandTest extends TestCase
     public function testImagick()
     {
         $baseColorPixel = new \ImagickPixel;
-        $baseColor = Mockery::mock('Intervention\Image\Gd\Color');
+        $baseColor = Mockery::mock('Omt\ImageHelper\Gd\Color');
         $baseColor->shouldReceive('getPixel')->once()->andReturn($baseColorPixel);
         $imagick = Mockery::mock('Imagick');
         $imagick->width = 100;
@@ -42,7 +42,7 @@ class TrimCommandTest extends TestCase
         $imagick->shouldReceive('cropimage')->with(104, 202, 47, 0)->once()->andReturn(true);
         $imagick->shouldReceive('setimagepage')->with(0, 0, 0, 0)->once()->andReturn(true);
         $imagick->shouldReceive('destroy')->with()->once()->andReturn(true);
-        $image = Mockery::mock('Intervention\Image\Image');
+        $image = Mockery::mock('Omt\ImageHelper\Image');
         $image->shouldReceive('getWidth')->once()->andReturn(800);
         $image->shouldReceive('getHeight')->once()->andReturn(600);
         $image->shouldReceive('pickColor')->with(0, 0, 'object')->once()->andReturn($baseColor);

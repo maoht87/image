@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\Commands\Argument;
+use Omt\ImageHelper\Commands\Argument;
 use PHPUnit\Framework\TestCase;
 
 class ArgumentTest extends TestCase
@@ -33,7 +33,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testRequiredFail()
     {
@@ -42,7 +42,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testRequiredFailSecondParameter()
     {
@@ -62,7 +62,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeIntegerFail()
     {
@@ -82,7 +82,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeArrayFail()
     {
@@ -126,7 +126,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeDigitFailString()
     {
@@ -135,7 +135,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeDigitFailFloat()
     {
@@ -144,7 +144,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeDigitFailBool()
     {
@@ -164,7 +164,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeNumericFail()
     {
@@ -188,7 +188,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeBooleanFail()
     {
@@ -208,7 +208,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeStringFail()
     {
@@ -229,7 +229,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testTypeClosureFail()
     {
@@ -273,7 +273,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testBetweenFailString()
     {
@@ -282,7 +282,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testBetweenFailAbove()
     {
@@ -291,7 +291,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testBetweenFailBelow()
     {
@@ -300,7 +300,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testBetweenFail()
     {
@@ -336,7 +336,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testMinFailString()
     {
@@ -345,7 +345,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testMinFail()
     {
@@ -381,7 +381,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testMaxFailString()
     {
@@ -390,7 +390,7 @@ class ArgumentTest extends TestCase
     }
 
     /**
-     * @expectedException \Intervention\Image\Exception\InvalidArgumentException
+     * @expectedException \Omt\ImageHelper\Exception\InvalidArgumentException
      */
     public function testMaxFail()
     {
@@ -411,12 +411,12 @@ class ArgumentTest extends TestCase
 
     private function validateArgument($argument, $value)
     {
-        $this->assertInstanceOf('\Intervention\Image\Commands\Argument', $argument);
+        $this->assertInstanceOf('\Omt\ImageHelper\Commands\Argument', $argument);
         $this->assertEquals($value, $argument->value());
     }
 
     private function getMockedCommand($arguments = [])
     {
-        return $this->getMockForAbstractClass('\Intervention\Image\Commands\AbstractCommand', [$arguments]);
+        return $this->getMockForAbstractClass('\Omt\ImageHelper\Commands\AbstractCommand', [$arguments]);
     }
 }

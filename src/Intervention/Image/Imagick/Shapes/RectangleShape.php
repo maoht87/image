@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick\Shapes;
+namespace Omt\ImageHelper\Imagick\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Image;
-use Intervention\Image\Imagick\Color;
+use Omt\ImageHelper\AbstractShape;
+use Omt\ImageHelper\Image;
+use Omt\ImageHelper\Imagick\Color;
 
 class RectangleShape extends AbstractShape
 {
