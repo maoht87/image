@@ -7,13 +7,13 @@ use Illuminate\Support\ServiceProvider;
 class ImageServiceProviderLaravelRecent extends ServiceProvider
 {
     /**
-     * Determines if Intervention Imagecache is installed
+     * Determines if Omt Imagecache is installed
      *
      * @return boolean
      */
     private function cacheIsInstalled()
     {
-        return class_exists('Intervention\\Image\\ImageCache');
+        return class_exists('Omt\\ImageHelper\\ImageCache');
     }
 
     /**

@@ -15,9 +15,9 @@ abstract class AbstractEncoder
     public $result;
 
     /**
-     * Image object to encode
+     * ImageHelper object to encode
      *
-     * @var Image
+     * @var ImageHelper
      */
     public $image;
 

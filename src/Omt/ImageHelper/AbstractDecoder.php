@@ -154,7 +154,7 @@ abstract class AbstractDecoder
     }
 
     /**
-     * Determines if current source data is Omt\ImageHelper\Image object
+     * Determines if current source data is Omt\ImageHelper\ImageHelper object
      *
      * @return boolean
      */
@@ -267,9 +267,9 @@ abstract class AbstractDecoder
     }
 
     /**
-     * Initiates new Image from Omt\ImageHelper\Image
+     * Initiates new ImageHelper from Omt\ImageHelper\ImageHelper
      *
-     * @param  Image $object
+     * @param  ImageHelper $object
      * @return \Omt\ImageHelper\Image
      */
     public function initFromInterventionImage($object)
@@ -343,7 +343,7 @@ abstract class AbstractDecoder
                 return $this->initFromBinary(base64_decode($this->data));
 
             default:
-                throw new NotReadableException("Image source not readable");
+                throw new NotReadableException("ImageHelper source not readable");
         }
     }
 

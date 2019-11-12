@@ -18,7 +18,7 @@ class ImageManager
     ];
 
     /**
-     * Creates new instance of Image Manager
+     * Creates new instance of ImageHelper Manager
      *
      * @param array $config
      */
@@ -43,7 +43,7 @@ class ImageManager
     }
 
     /**
-     * Initiates an Image instance from different input types
+     * Initiates an ImageHelper instance from different input types
      *
      * @param  mixed $data
      *
@@ -80,7 +80,7 @@ class ImageManager
      */
     public function cache(Closure $callback, $lifetime = null, $returnObj = false)
     {
-        if (class_exists('Intervention\\Image\\ImageCache')) {
+        if (class_exists('Omt\\ImageHelper\\ImageCache')) {
             // create imagecache
             $imagecache = new ImageCache($this);
 
@@ -106,7 +106,7 @@ class ImageManager
     {
         if (is_string($this->config['driver'])) {
             $drivername = ucfirst($this->config['driver']);
-            $driverclass = sprintf('Intervention\\Image\\%s\\Driver', $drivername);
+            $driverclass = sprintf('Omt\\ImageHelper\\%s\\Driver', $drivername);
 
             if (class_exists($driverclass)) {
                 return new $driverclass;
@@ -135,7 +135,7 @@ class ImageManager
     {
         if ( ! function_exists('finfo_buffer')) {
             throw new MissingDependencyException(
-                "PHP Fileinfo extension must be installed/enabled to use Intervention Image."
+                "PHP Fileinfo extension must be installed/enabled to use Omt ImageHelper."
             );
         }
     }

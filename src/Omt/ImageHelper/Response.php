@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 class Response
 {
     /**
-     * Image that should be displayed by response
+     * ImageHelper that should be displayed by response
      *
-     * @var Image
+     * @var ImageHelper
      */
     public $image;
 

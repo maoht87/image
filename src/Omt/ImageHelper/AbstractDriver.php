@@ -14,7 +14,7 @@ abstract class AbstractDriver
     public $decoder;
 
     /**
-     * Image encoder instance
+     * ImageHelper encoder instance
      *
      * @var \Omt\ImageHelper\AbstractEncoder
      */

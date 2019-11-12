@@ -17,7 +17,7 @@ class ImageServiceProviderLaravel4 extends ServiceProvider
         $this->package('intervention/image');
 
         // try to create imagecache route only if imagecache is present
-        if (class_exists('Intervention\\Image\\ImageCache')) {
+        if (class_exists('Omt\\ImageHelper\\ImageCache')) {
 
             $app = $this->app;
 

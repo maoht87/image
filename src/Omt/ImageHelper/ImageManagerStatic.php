@@ -46,7 +46,7 @@ class ImageManagerStatic
     }
 
     /**
-     * Statically initiates an Image instance from different input types
+     * Statically initiates an ImageHelper instance from different input types
      *
      * @param  mixed $data
      *

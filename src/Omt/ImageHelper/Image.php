@@ -11,7 +11,7 @@ use Psr\Http\Message\StreamInterface;
  * @method \Omt\ImageHelper\Image backup(string $name = 'default')                                                                                                     Backups current image state as fallback for reset method under an optional name. Overwrites older state on every call, unless a different name is passed.
  * @method \Omt\ImageHelper\Image blur(int $amount = 1)                                                                                                            Apply a gaussian blur filter with a optional amount on the current image. Use values between 0 and 100.
  * @method \Omt\ImageHelper\Image brightness(int $level)                                                                                                           Changes the brightness of the current image by the given level. Use values between -100 for min. brightness. 0 for no change and +100 for max. brightness.
- * @method \Omt\ImageHelper\Image cache(\Closure $callback, int $lifetime = null, boolean $returnObj = false)                                                      Method to create a new cached image instance from a Closure callback. Pass a lifetime in minutes for the callback and decide whether you want to get an Intervention Image instance as return value or just receive the image stream.
+ * @method \Omt\ImageHelper\Image cache(\Closure $callback, int $lifetime = null, boolean $returnObj = false)                                                      Method to create a new cached image instance from a Closure callback. Pass a lifetime in minutes for the callback and decide whether you want to get an Omt ImageHelper instance as return value or just receive the image stream.
  * @method \Omt\ImageHelper\Image canvas(int $width, int $height, mixed $bgcolor = null)                                                                       Factory method to create a new empty image instance with given width and height. You can define a background-color optionally. By default the canvas background is transparent.
  * @method \Omt\ImageHelper\Image circle(int $radius, int $x, int $y, \Closure $callback = null)                                                           Draw a circle at given x, y, coordinates with given radius. You can define the appearance of the circle by an optional closure callback.
  * @method \Omt\ImageHelper\Image colorize(int $red, int $green, int $blue)                                                                                Change the RGB color values of the current image on the given channels red, green and blue. The input values are normalized so you have to include parameters from 100 for maximum color value. 0 for no change and -100 to take out all the certain color on the image.
@@ -63,14 +63,14 @@ class Image extends File
     protected $driver;
 
     /**
-     * Image resource/object of current image processor
+     * ImageHelper resource/object of current image processor
      *
      * @var mixed
      */
     protected $core;
 
     /**
-     * Array of Image resource backups of current image processor
+     * Array of ImageHelper resource backups of current image processor
      *
      * @var array
      */
@@ -84,7 +84,7 @@ class Image extends File
     public $encoded = '';
 
     /**
-     * Creates a new Image instance
+     * Creates a new ImageHelper instance
      *
      * @param AbstractDriver $driver
      * @param mixed  $core

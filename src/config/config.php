@@ -4,10 +4,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Image Driver
+    | ImageHelper Driver
     |--------------------------------------------------------------------------
     |
-    | Intervention Image supports "GD Library" and "Imagick" to process images
+    | Omt ImageHelper supports "GD Library" and "Imagick" to process images
     | internally. You may choose one of them according to your PHP
     | configuration. By default PHP's "GD Library" implementation is used.
     |
